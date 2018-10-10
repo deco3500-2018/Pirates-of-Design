@@ -90,8 +90,16 @@ router.get('/usersList', function(req, res){
 router.post('/deleteUser', (req, res, next) => {
   const d_username = req.body.username;
   User.removeUserByUsername(d_username, (err, user) => {
-    res.json({success:true});
+    res.json({success:true, data: user});
   });
 });
+
+// Update Users
+router.post('/updateUser', (req, res, next) => {
+  const u_user = req.body;
+  User.updateUserById(u_user, (err, user) => {
+    res.json({success:true, data: user});
+  });
+})
 
 module.exports = router;

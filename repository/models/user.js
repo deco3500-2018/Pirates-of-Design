@@ -60,3 +60,13 @@ module.exports.comparePassword = function(password, hash, callback){
 module.exports.removeUserByUsername = function(d_username, callback){
   User.deleteOne({username: d_username}, callback);
 }
+
+module.exports.updateUserById = function(u_user, callback){
+  const condition = {name: u_user.name, email: u_user.email, username: u_user.username};
+  console.log(condition);
+  User.findByIdAndUpdate(
+    u_user._id,
+    {name: u_user.name, email: u_user.email, username: u_user.username},
+    callback
+  );
+}
