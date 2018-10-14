@@ -1,4 +1,7 @@
 
+<div id="header"></div>
+<div id="header_content"></div>
+
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script>
   $(function(){
@@ -6,10 +9,13 @@
     $('#header_content').load('template/header_content.html');
     $('#footer_content').load('template/footer_content.html');
     $('#footer').load('template/footer.html');
+
+    var script = document.createElement('script');
+    script.src = 'assets/js/index.js';
+    script.setAttribute('src','assets/js/index.js');
+    document.getElementsByTagName("script")[0].parentNode.appendChild(script);
   })
 </script>
-<div id="header"></div>
-<div id="header_content"></div>
 
 
 <div class="container login">

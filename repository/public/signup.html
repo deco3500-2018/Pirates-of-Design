@@ -1,4 +1,6 @@
 
+<div id="header"></div>
+<div id="header_content"></div>
 
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script>
@@ -7,11 +9,14 @@
     $('#header_content').load('template/header_content.html');
     $('#footer_content').load('template/footer_content.html');
     $('#footer').load('template/footer.html');
+
+    var script = document.createElement('script');
+    script.src = 'assets/js/index.js';
+    script.setAttribute('src','assets/js/index.js');
+    document.getElementsByTagName("script")[0].parentNode.appendChild(script);
   })
 </script>
 
-<div id="header"></div>
-<div id="header_content"></div>
 
 <style>
 
@@ -86,10 +91,8 @@
               <button class="sort" data-sort="name">
                 Sort by name
               </button>
-
               <ul class="list">
               </ul>
-
             </div>
 
           </div>
@@ -101,9 +104,6 @@
   </div>
 
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-<script src="/assets/js/index.js"></script>
 
 <div id="footer_content"></div>
 <div id="footer"></div>

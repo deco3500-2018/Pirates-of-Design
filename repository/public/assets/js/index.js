@@ -1,4 +1,5 @@
 $('document').ready(function(){
+
   if ($('.container').hasClass('login')){
     $('#login-menu').addClass('active');
 
@@ -28,10 +29,16 @@ $('document').ready(function(){
 
         var userList = new List('users', options, values);
 
+        new jBox('Tooltip', {
+          attach: '.tooltip'
+        });
+
       }
     })
 
   } else if ( $('.container').hasClass('home')) {
     $('#home-menu').addClass('active');
   }
+
+
 });
