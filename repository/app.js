@@ -7,11 +7,12 @@ const mongoose = require('mongoose');
 
 const app = express();
 const users = require('./routes/users');
+const frontend = require('./routes/frontend');
 const port = 3000;
 const config = require('./config/database');
 
 //Connect with database
-mongoose.connect(config.database);
+mongoose.connect(config.database, { useNewUrlParser: true });
 
 //On Connection
 mongoose.connection.on('connected', () => {
@@ -26,9 +27,6 @@ mongoose.connection.on('error', (err) => {
 //CORS Middleware
 app.use(cors());
 
-//Static Folder
-app.use(express.static(path.join(__dirname, 'public')));
-
 //Body Parser Middleware
 app.use(bodyParser.json());
 
@@ -40,6 +38,9 @@ require('./config/passport')(passport);
 
 //Users Route
 app.use('/users',users);
+
+//Static Folder
+app.all('*', frontend);
 
 //Route
 app.get('/test', (req, res) => {
