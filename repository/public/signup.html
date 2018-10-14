@@ -1,0 +1,109 @@
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+  $(function(){
+    $('#header').load('template/header.html');
+    $('#header_content').load('template/header_content.html');
+    $('#footer_content').load('template/footer_content.html');
+    $('#footer').load('template/footer.html');
+  })
+</script>
+
+<div id="header"></div>
+<div id="header_content"></div>
+
+<style>
+
+</style>
+
+<div class="container register">
+  <h1 class="font-mo text-bold text-up">Sign Up</h1>
+  <hr class="custom-hr" align="left" />
+
+  <p class="title-info font-80 line-25">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue vestibulum mauris, euismod hendrerit velit. Morbi vel fermentum turpis. Sed dapibus, tortor nec hendrerit molestie, magna odio dictum risus, id tempus est lorem a tellus. Donec a massa mi. Suspendisse potenti. Fusce mollis nibh mi, ut porta velit varius id. Nullam id gravida magna, hendrerit volutpat erat. Fusce bibendum nibh at lorem condimentum posuere. Morbi aliquet, tellus non fermentum interdutm, nulla ligula ullamcorper nulla, ut eleifend ligula tellus nec elit. Suspendisse a lorem ultricies, sodales sapien nec, convallis augue. Sed ut ullamcorper quam, at varius lorem. Vivamus in neque varius, molestie leo ut, iaculis lorem. Maecenas et ipsum nec sem sagittis eleifend.
+  </p>
+
+  <div class="content">
+    <h4 class="font-mo text-bold">Go to your account</h4>
+    <div class="register-box custom-box fill-60-viewport">
+
+      <form>
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="inputName">Name</label>
+              <input type="text" class="form-control custom-input" id="inputName" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail">Email address</label>
+              <input type="email" class="form-control custom-input" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control custom-input" id="inputPassword" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+              <label for="inputMedicalId">Medical ID</label>
+              <input type="text" class="form-control custom-input" id="inputMedicalId" placeholder="Enter your medical ID">
+            </div>
+
+            <div class="form-group">
+              <label for="inputPhonum">Phone Number</label>
+              <input type="text" class="form-control custom-input" id="inputPhonum" placeholder="Enter your phone number">
+            </div>
+
+            <div class="font-80 mt-4">
+              Already have an account?
+            </div>
+            <button class="btn custom-button align-left font-80">Login</button>
+            <br/>
+          </div>
+
+          <div class="col-md-8 register-job">
+            <p class="disp-inline mr-3">GP</p>
+            <label class="switch">
+
+              <input type="checkbox">
+              <span class="slider round"></span>
+
+            </label>
+            <p class="disp-inline ml-3">Physician</p>
+
+            <button type="submit" class="btn custom-button register-button align-right text-up space-1">Sign Up</button>
+
+            <p class="text-bold mt-5">Pick the hospital</p>
+            <hr class="custom-hr align-left" align="left" />
+
+            <div id="users">
+              <input class="search" placeholder="Search" />
+              <button class="sort" data-sort="name">
+                Sort by name
+              </button>
+
+              <ul class="list">
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="/assets/js/index.js"></script>
+
+<div id="footer_content"></div>
+<div id="footer"></div>

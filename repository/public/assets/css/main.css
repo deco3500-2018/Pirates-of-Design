@@ -25,6 +25,8 @@
 .align-left {text-align: left;}
 .align-middle {text-align: middle}
 
+.disp-inline {display: inline;}
+
 * {
   font-family: 'Roboto', sans-serif;
 }
@@ -73,11 +75,21 @@
   font-weight: 600;
 }
 
+.switch { position: relative; display: inline-block; width: 60px; height: 28px; margin-bottom: 0px; bottom: -7px}
+.switch input {display:none;}
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; -webkit-transition: .4s; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; -webkit-transition: .4s; transition: .4s;}
+input:checked + .slider { background-color: #2196F3; }
+input:focus + .slider { box-shadow: 0 0 1px #2196F3; }
+input:checked + .slider:before { -webkit-transform: translateX(28px); -ms-transform: translateX(28px); transform: translateX(28px);}
+.slider.round { border-radius: 28px; }
+.slider.round:before { border-radius: 50%;}
+
 /* Header */
 
 .header_content .title { line-height: 5px; }
 .header_content nav a{ color: black; font-size: 80%; text-transform: uppercase; letter-spacing: 1px}
-.header_content nav .active { border-bottom: 5px solid #5288f3; }
+.active { border-bottom: 5px solid #5288f3; }
 .header_content .header_logo { max-height: 50px; margin-left: 40%;}
 
 /* Login  */
@@ -99,3 +111,9 @@
   border-radius: 20px;
   background: url('http://www.sinai.org/sites/default/files/wide%20Doctor%20and%20Nurse%20Writing%20copy_0.jpg') 0% 0%/cover ;
 }
+
+/* Sign Up */
+.register {margin-top: 5%; }
+.register .content {margin-top: 5%;}
+.register-box {padding: 5%;}
+.register-button {margin-top: 10%; float: right;}
