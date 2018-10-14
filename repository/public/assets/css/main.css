@@ -1,0 +1,26 @@
+
+.fill-viewport {min-height: 100vh}
+.fill-20-viewport {min-height: 20vh}
+.fill-50-viewport {min-height: 50vh}
+.fill-60-viewport {min-height: 60vh}
+.fill-80-viewport {min-height: 80vh}
+.fill-90-viewport {min-height: 90vh}
+.text-center { text-align: center;}
+.text-italic {font-weight: 600; font-style: italic;}
+.text-semibold {font-weight: 600}
+.text-bold {font-weight: 700}
+.text-thin {font-weight: 300}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-ro { font-family: 'Roboto', sans-serif !important; }
+.font-mo { font-family: 'Montserrat', sans-serif !important; }
+
+/* Header */
+
+.header_content .title { line-height: 5px; }
+.header_content nav a{ color: black; font-size: 80%; text-transform: uppercase; letter-spacing: 1px}
+.header_content nav .active { border-bottom: 5px solid #5288f3; }
+.header_content .header_logo { max-height: 50px; margin-left: 40%;}
