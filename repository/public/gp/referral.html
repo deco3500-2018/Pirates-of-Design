@@ -7,23 +7,21 @@
 <script>
   $(function(){
     $('#header').load('../template/header.html');
-    $('#header_content').load('../template/header_content.html');
+    $('#header_content').load('../template/header_content_gp.html');
     $('#footer_content').load('../template/footer_content.html');
     $('#footer').load('../template/footer.html');
 
     var script = document.createElement('script');
-    script.src = 'assets/js/index.js';
-    script.setAttribute('src','../assets/js/index.js');
+    script.src = 'assets/js/index-gp.js';
+    script.setAttribute('src','../assets/js/index-gp.js');
     document.getElementsByTagName("script")[0].parentNode.appendChild(script);
   })
 </script>
 
 
-<div class="container home">
-  <h1>Hello</h1>
+<div class="container referral">
+  <h1>Referral</h1>
 </div>
-
-<script src="/assets/js/index.js"></script>
 
 <div id="footer_content"></div>
 <div id="footer"></div>
