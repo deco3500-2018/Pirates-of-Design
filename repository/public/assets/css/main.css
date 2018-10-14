@@ -11,12 +11,67 @@
 .text-bold {font-weight: 700}
 .text-thin {font-weight: 300}
 
+.space-1 {letter-spacing: 1px; }
+.space-2 {letter-spacing: 2px; }
+.space-3 {letter-spacing: 3px; }
+
+.text-up {text-transform: uppercase;}
+.font-80 { font-size: 80%}
+.font-90 {font-size: 90%}
+.line-20 {line-height: 20px}
+.line-25 {line-height: 25px}
+
+.align-right {text-align: right;}
+.align-left {text-align: left;}
+.align-middle {text-align: middle}
+
 * {
   font-family: 'Roboto', sans-serif;
 }
 
+.form-control:focus, .btn:focus {
+  box-shadow: 0 0 0 0 rgba(0,123,255,.25) !important;
+}
+
 .font-ro { font-family: 'Roboto', sans-serif !important; }
 .font-mo { font-family: 'Montserrat', sans-serif !important; }
+
+.custom-hr { width: 50px; border: 5px solid #5288f3; border-radius: 10px; text-align: left;}
+.custom-box {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.20);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.20);
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.20);
+  border-radius: 20px;
+}
+
+.custom-input {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.20);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.20);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.20);
+  border-radius: 0px;
+  border: 0px !important;
+}
+.custom-input:hover {
+  border: 0px !important;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.20);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.20);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.20);
+}
+.custom-button, .custom-attr {
+  cursor: pointer;
+  border-bottom: 5px solid #5288f3;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  width: 30%;
+  font-weight: 400;
+  padding-left: 0px !important;
+  -webkit-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+.custom-button:hover, .custom-attr:hover {
+  width: 50%;
+  font-weight: 600;
+}
 
 /* Header */
 
@@ -24,3 +79,23 @@
 .header_content nav a{ color: black; font-size: 80%; text-transform: uppercase; letter-spacing: 1px}
 .header_content nav .active { border-bottom: 5px solid #5288f3; }
 .header_content .header_logo { max-height: 50px; margin-left: 40%;}
+
+/* Login  */
+.login {margin-top: 5%;}
+.login-box { padding: 5%; }
+.login-button {
+  margin-top: 10%;
+  float: right;
+}
+.login .content {margin-top: 5%;}
+.login .content .col-md-4 {
+  border-right: 1px solid black;
+}
+
+.login .content .ref-img { padding-left: 3%;}
+.login .content .ref-img-inside {
+  width: 100%;
+  height: 25%;
+  border-radius: 20px;
+  background: url('http://www.sinai.org/sites/default/files/wide%20Doctor%20and%20Nurse%20Writing%20copy_0.jpg') 0% 0%/cover ;
+}

@@ -19,6 +19,7 @@ router.get('/example', function (req, res) {
 });
 
 router.use('/', express.static(path.join(__dirname, '../public')));
-router.use('/about', express.static(path.join(__dirname, '../public/about.html')));
+router.use('/signup', express.static(path.join(__dirname, '../public/signup.html')));
+router.use('/login', express.static(path.join(__dirname, '../public/login.html')));
 
 module.exports = router;
