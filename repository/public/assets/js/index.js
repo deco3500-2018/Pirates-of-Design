@@ -1,4 +1,4 @@
-$('document').ready(function(){
+$(window).on('load', function() {
 
   if ($('.container').hasClass('login')){
     $('#login-menu').addClass('active');
