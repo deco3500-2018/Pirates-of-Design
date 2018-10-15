@@ -19,13 +19,17 @@ router.post('/register', (req, res, next) => {
   let newUser = new User({
     name: req.body.name,
     email: req.body.email,
-    username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    phonum: req.body.phonum,
+    medicalnum: req.body.medicalnum,
+    experience: req.body.experience,
+    estimate_cost: req.body.estimate_cost,
+    isPhysician: req.body.isPhysician
   });
 
   User.addUser( newUser, (err, user)=>{
     if (err){
-      res.json({sucess: false, msg: 'Failed to register user'})
+      res.json({sucess: false, msg: 'Failed to register user', error: err})
     } else {
       res.json({success: true, msg: 'User registered'})
     }
@@ -35,10 +39,10 @@ router.post('/register', (req, res, next) => {
 
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
-  const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
 
-  User.getUserByUsername(username, (err, user) => {
+  User.getUserByEmail(email, (err, user) => {
     if(err) throw err;
     if(!user){
       return res.json({success: false, msg: 'User not found'});
@@ -54,12 +58,7 @@ router.post('/authenticate', (req, res, next) => {
         res.json({
           success: true,
           token: 'bearer '+token,
-          user: {
-            id: user._id,
-            name: user.name,
-            username: user.username,
-            email: user.email
-          }
+          user: user
         });
       } else {
         return res.json({success: false, msg: 'Wrong password'});
@@ -75,7 +74,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 
 // Get all users
 router.get('/usersList', function(req, res){
-  User.find({}, ['name', 'email', 'username'], function(err,users){
+  User.find({}, ['name', 'email', 'phonum', 'medicalnum', 'experience', 'estimate_cost', 'isPhysician'], function(err,users){
     var userMap = {};
 
     users.forEach(function(user) {
@@ -88,8 +87,8 @@ router.get('/usersList', function(req, res){
 
 // Delete UserS
 router.post('/deleteUser', (req, res, next) => {
-  const d_username = req.body.username;
-  User.removeUserByUsername(d_username, (err, user) => {
+  const d_email = req.body.email;
+  User.removeUserByEmail(d_email, (err, user) => {
     res.json({success:true, data: user});
   });
 });

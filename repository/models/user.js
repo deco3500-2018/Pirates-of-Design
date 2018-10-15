@@ -19,12 +19,28 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  username: {
+  password: {
     type: String,
     required: true
   },
-  password: {
+  phonum: {
     type: String,
+    required: true
+  },
+  medicalnum: {
+    type: String,
+    required: true
+  },
+  experience: {
+    type: Number,
+    required: true
+  },
+  estimate_cost: {
+    type: Number,
+    required: true
+  },
+  isPhysician: {
+    type: Boolean,
     required: true
   }
 }, {strict: false});
@@ -35,8 +51,8 @@ module.exports.getUserById = function(id, callback) {
   User.findById(id, callback);
 }
 
-module.exports.getUserByUsername = function(username, callback){
-  const query = {username: username};
+module.exports.getUserByEmail = function(email, callback){
+  const query = {email: email};
   User.findOne(query, callback);
 }
 
@@ -57,16 +73,24 @@ module.exports.comparePassword = function(password, hash, callback){
   });
 }
 
-module.exports.removeUserByUsername = function(d_username, callback){
-  User.deleteOne({username: d_username}, callback);
+module.exports.removeUserByEmail = function(d_email, callback){
+  User.deleteOne({email: d_email}, callback);
 }
 
 module.exports.updateUserById = function(u_user, callback){
-  const condition = {name: u_user.name, email: u_user.email, username: u_user.username};
+  const condition = {
+    name: u_user.name,
+    email: u_user.email,
+    phonum: u_user.phonum,
+    medicalnum: u_user.medicalnum,
+    experience: u_user.experience,
+    estimate_cost: u_user.estimate_cost,
+    isPhysician: u_user.isPhysician
+  };
   console.log(condition);
   User.findByIdAndUpdate(
     u_user._id,
-    {name: u_user.name, email: u_user.email, username: u_user.username},
+    condition,
     callback
   );
 }
