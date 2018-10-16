@@ -40,7 +40,7 @@ router.post('/addReferral', (req, res, next) => {
 // Get all Referrals
 router.get('/referralList', function(req, res){
   console.log('test');
-  Referral.find({}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id'], function(err,Referrals){
+  Referral.find({}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at'], function(err,Referrals){
     var ReferralMap = {};
 
     Referrals.forEach(function(Referral) {
@@ -63,7 +63,7 @@ router.post('/deleteReferral', (req, res, next) => {
 router.post('/updateReferral', (req, res, next) => {
   const u_Referral = req.body;
   Referral.updateReferralById(u_Referral, (err, Referral) => {
-    res.json({success:true, data: Referral});
+    res.json({success:true, data: Referral, error: err});
   });
 })
 

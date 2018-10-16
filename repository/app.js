@@ -9,6 +9,7 @@ const app = express();
 const users = require('./routes/users');
 const hospitals = require('./routes/hospitals');
 const referrals = require('./routes/referrals');
+const schedules = require('./routes/schedules');
 const frontend = require('./routes/frontend');
 const port = 3000;
 const config = require('./config/database');
@@ -46,6 +47,9 @@ app.use('/hospital',hospitals);
 
 //Referrals Route
 app.use('/referral',referrals);
+
+//Schedules Route
+app.use('/schedules',schedules);
 
 //Static Folder
 app.all('*', frontend);

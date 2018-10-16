@@ -50,7 +50,7 @@ const ReferralSchema = mongoose.Schema({
     ref: 'User'
   }
 
-}, {strict: false, timestamp: true});
+}, {timestamps: { createdAt: 'created_at' }});
 
 const Referral = module.exports = mongoose.model('Referral', ReferralSchema);
 
