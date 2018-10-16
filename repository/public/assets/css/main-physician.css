@@ -27,3 +27,14 @@
 .profile .pic {border-radius: 50%; max-width: 90%;}
 .profile .data p {margin-bottom: 0px}
 .profile .row {margin-top: 5%;}
+
+/* Ref Detail */
+.ref-detail .pic {
+  border-radius: 50%;
+  max-width: 90%;
+  margin-bottom: 3%;
+}
+
+.ref-detail p{margin-bottom: 0px;}
+
+.ref-detail .row {margin-top: 5%;}

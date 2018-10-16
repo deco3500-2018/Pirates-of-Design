@@ -22,6 +22,10 @@ router.get('/gp/referral/:id/backend', function (req, res) {
   res.send(req.params)
 })
 
+router.get('/physician/referral/:id/backend', function (req, res) {
+  res.send(req.params)
+})
+
 router.use('/', express.static(path.join(__dirname, '../public')));
 router.use('/signup', express.static(path.join(__dirname, '../public/signup.html')));
 router.use('/login', express.static(path.join(__dirname, '../public/login.html')));
@@ -34,6 +38,7 @@ router.use('/gp/referral/*', express.static(path.join(__dirname, '../public/gp/r
 router.use('/physician/referral', express.static(path.join(__dirname, '../public/physician/referral.html')));
 router.use('/physician/schedule', express.static(path.join(__dirname, '../public/physician/schedule.html')));
 router.use('/physician/profile', express.static(path.join(__dirname, '../public/physician/profile.html')));
+router.use('/physician/referral/*', express.static(path.join(__dirname, '../public/physician/referral-detail.html')));
 
 
 module.exports = router;

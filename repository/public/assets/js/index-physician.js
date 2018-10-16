@@ -47,6 +47,17 @@ $(document).ready(function() {
   } else if ( $('.container').hasClass('profile')) {
     $('#profile-menu').addClass('active');
 
+  } else if ( $('.container').hasClass('ref-detail')) {
+    console.log(window.location.href);
+
+    $.ajax({
+      url: window.location.href+'/backend',
+      method: 'GET',
+      success: function(response){
+        $('.ref-title').text('Referral #'+ response["id"])
+      }
+    })
+
   }
 
 
