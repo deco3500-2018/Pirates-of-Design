@@ -18,6 +18,10 @@ const HospitalSchema = mongoose.Schema({
   address: {
     type:String,
     required: true
+  },
+  phonum: {
+    type: String,
+    required: true
   }
 }, {strict: false});
 
@@ -38,7 +42,8 @@ module.exports.removeHospitalById = function(d_id, callback){
 module.exports.updateHospitalById = function(u_hospital, callback){
   const condition = {
     name: u_hospital.name,
-    address: u_hospital.address
+    address: u_hospital.address,
+    phonum: u_hospital.phonum
   };
   console.log(condition);
   Hospital.findByIdAndUpdate(

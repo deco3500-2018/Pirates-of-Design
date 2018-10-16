@@ -46,15 +46,10 @@ $(document).ready(function() {
 
   } else if ( $('.container').hasClass('profile')) {
     $('#profile-menu').addClass('active');
+
+
+
   }
 
 
-  document.addEventListener("DOMContentLoaded", function(event) {
-    // your code here
-    alert('hm')
-  });
-
-
 });
-
-window.onunload = function(){alert('hm')};

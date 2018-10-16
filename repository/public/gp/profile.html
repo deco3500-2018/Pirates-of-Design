@@ -2,6 +2,8 @@
 
 <div id="header"></div>
 <div id="header_content"></div>
+<link rel="stylesheet" href="../assets/css/main-gp.css">
+
 
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script>
@@ -20,7 +22,55 @@
 
 
 <div class="container profile">
-  <h1>Profile</h1>
+  <h1 class="font-mo text-bold text-up">Profile</h1>
+  <hr class="custom-hr" align="left" />
+
+  <p class="title-info font-80 line-25">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue vestibulum mauris, euismod hendrerit velit. Morbi vel fermentum turpis. Sed dapibus, tortor nec hendrerit molestie, magna odio dictum risus, id tempus est lorem a tellus. Donec a massa mi. Suspendisse potenti. Fusce mollis nibh mi, ut porta velit varius id. Nullam id gravida magna, hendrerit volutpat erat. Fusce bibendum nibh at lorem condimentum posuere. Morbi aliquet, tellus non fermentum interdutm, nulla ligula ullamcorper nulla, ut eleifend ligula tellus nec elit. Suspendisse a lorem ultricies, sodales sapien nec, convallis augue. Sed ut ullamcorper quam, at varius lorem. Vivamus in neque varius, molestie leo ut, iaculis lorem. Maecenas et ipsum nec sem sagittis eleifend.
+  </p>
+
+  <div class="row">
+
+    <!-- Profile pic -->
+    <div class="col-md-4 p-3">
+      <img class="pic" src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?size=338&ext=jpg">
+    </div>
+
+    <!-- Data -->
+    <div class="col-md-4 data">
+      <p class="font-mo text-bold">Luke <br/>Clarkson</p>
+      <hr class="custom-hr" align="left" />
+
+      <p class="font-80">123123 Street Road</p>
+      <p class="font-80">040212341234</p>
+      <p class="font-80">21 years old (1990-02-02)</p>
+      <p class="font-80">Medical ID: 123123</p>
+      <br/>
+      <p class="font-80">Hospital A</p>
+      <p class="font-80">asdfadsfasdf St</p>
+      <p class="font-80"></p>
+
+    </div>
+
+    <!-- Maps -->
+    <div class="col-md-4 custom-box" id="googleMap" style="width:100%;height:400px;">
+
+      <script>
+      function myMap() {
+      var mapProp= {
+          center:new google.maps.LatLng(51.508742,-0.120850),
+          zoom:5,
+      };
+      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      }
+      </script>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVUk29LA58EyC3PJ8RiPg4iuayv8f0fs0&callback=myMap">
+      </script>
+
+    </div>
+
+  </div>
 </div>
 
 <div id="footer_content"></div>

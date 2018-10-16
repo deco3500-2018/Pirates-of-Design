@@ -18,5 +18,12 @@
 .referral .all-appointment {
   border-radius: 20px;
   background: url('http://www.sinai.org/sites/default/files/wide%20Doctor%20and%20Nurse%20Writing%20copy_0.jpg') 0% 0%/cover ;
-
+  min-height: 80px;
 }
+
+.referral .all-appointment .p-3 { line-height: 20px;}
+
+/* Profile */
+.profile .pic {border-radius: 50%; max-width: 90%;}
+.profile .data p {margin-bottom: 0px}
+.profile .row {margin-top: 5%;}

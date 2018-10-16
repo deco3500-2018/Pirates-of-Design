@@ -18,7 +18,8 @@ const config = require('../config/database');
 router.post('/addHospital', (req, res, next) => {
   let newHospital = new Hospital({
     name: req.body.name,
-    address: req.body.address
+    address: req.body.address,
+    phonum: req.body.phonum
   });
 
   Hospital.addHospital( newHospital, (err, Hospital)=>{
@@ -33,7 +34,7 @@ router.post('/addHospital', (req, res, next) => {
 // Get all Hospitals
 router.get('/hospitalList', function(req, res){
   console.log('test');
-  Hospital.find({}, ['name', 'address'], function(err,Hospitals){
+  Hospital.find({}, ['name', 'address', 'phonum'], function(err,Hospitals){
     var HospitalMap = {};
 
     Hospitals.forEach(function(Hospital) {
