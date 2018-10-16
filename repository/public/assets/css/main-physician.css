@@ -3,3 +3,20 @@
 .schedules #calendar {
   margin-top: 5%;
 }
+
+/* Referral Physician */
+
+.custom-box .ref_description {
+  max-height: 20px;
+  overflow: hidden;
+}
+
+.custom-box p {
+  margin-bottom: 0px !important
+}
+
+.referral .all-appointment {
+  border-radius: 20px;
+  background: url('http://www.sinai.org/sites/default/files/wide%20Doctor%20and%20Nurse%20Writing%20copy_0.jpg') 0% 0%/cover ;
+
+}
