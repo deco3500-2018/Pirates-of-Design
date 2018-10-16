@@ -1,4 +1,4 @@
-$(window).on('load', function() {
+$(document).ready(function() {
 
   if ($('.container').hasClass('referral')){
     $('#referral-menu').addClass('active');

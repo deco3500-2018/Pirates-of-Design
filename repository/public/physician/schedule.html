@@ -4,6 +4,11 @@
 <div id="header_content"></div>
 
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<link rel="stylesheet" href="../assets/css/main-physician.css">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src='https://fullcalendar.io/js/fullcalendar-3.1.0/lib/jquery.min.js'></script>
+<script src='https://fullcalendar.io/js/fullcalendar-3.1.0/lib/jquery-ui.min.js'></script>
 <script>
   $(function(){
     $('#header').load('../template/header.html');
@@ -11,17 +16,82 @@
     $('#footer_content').load('../template/footer_content.html');
     $('#footer').load('../template/footer.html');
 
-    var script = document.createElement('script');
-    script.src = 'assets/js/index.js';
-    script.setAttribute('src','../assets/js/index.js');
-    document.getElementsByTagName("script")[0].parentNode.appendChild(script);
   })
 </script>
 
 
 <div class="container schedules">
-  <h1>Schedule</h1>
+  <h1 class="font-mo text-bold text-up">Schedule</h1>
+  <hr class="custom-hr" align="left" />
+
+  <p class="title-info font-80 line-25">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue vestibulum mauris, euismod hendrerit velit. Morbi vel fermentum turpis. Sed dapibus, tortor nec hendrerit molestie, magna odio dictum risus, id tempus est lorem a tellus. Donec a massa mi. Suspendisse potenti. Fusce mollis nibh mi, ut porta velit varius id. Nullam id gravida magna, hendrerit volutpat erat. Fusce bibendum nibh at lorem condimentum posuere. Morbi aliquet, tellus non fermentum interdutm, nulla ligula ullamcorper nulla, ut eleifend ligula tellus nec elit. Suspendisse a lorem ultricies, sodales sapien nec, convallis augue. Sed ut ullamcorper quam, at varius lorem. Vivamus in neque varius, molestie leo ut, iaculis lorem. Maecenas et ipsum nec sem sagittis eleifend.
+  </p>
+
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row form-group">
+              <label for="p-in" class="col-md-4 label-heading">Event Name</label>
+              <div class="col-md-8 ui-front">
+                  <input type="text" class="form-control" name="name" value="" id="name">
+              </div>
+            </div>
+            <div class="row form-group">
+              <label for="p-in" class="col-md-4 label-heading">Description</label>
+              <div class="col-md-8 ui-front">
+                  <input type="text" class="form-control" name="description" id="description">
+              </div>
+            </div>
+            <div class="row form-group">
+              <label for="p-in" class="col-md-4 label-heading" >Start Date</label>
+
+              <div class="col-md-8 input-group date" id="datetimepicker1" data-target="#datetimepicker1" data-target-input="nearest">
+                  <input type="text" class="form-control datetimepicker-input" name="start_date" id="start_date">
+                  <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+              </div>
+
+            </div>
+            <div class="row form-group">
+              <label for="p-in" class="col-md-4 label-heading">End Date</label>
+
+              <div class="col-md-8 input-group date" id="datetimepicker2" data-target="#datetimepicker2" data-target-input="nearest">
+                  <input type="text" class="form-control datetimepicker-input" name="end_date" id="end_date">
+                  <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" id="addEventBtn" value="Add Event">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div id='calendar'></div>
 </div>
+
+<script>
+  $(function(){
+    var script = document.createElement('script');
+    script.src = 'assets/js/index-physician.js';
+    script.setAttribute('src','../assets/js/index-physician.js');
+    document.getElementsByTagName("script")[0].parentNode.appendChild(script);
+  })
+</script>
 
 <div id="footer_content"></div>
 <div id="footer"></div>
