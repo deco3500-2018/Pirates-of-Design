@@ -47,8 +47,6 @@ $(document).ready(function() {
   } else if ( $('.container').hasClass('profile')) {
     $('#profile-menu').addClass('active');
 
-
-
   }
 
 

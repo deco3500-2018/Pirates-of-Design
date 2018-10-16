@@ -1,4 +1,48 @@
 
+/* Referral  */
+.referral .next {
+  background: #2196F3;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  opacity: 1;
+  float: right;
+  -webkit-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+
+.ref-info {
+  border-left: 1px solid black;
+}
+
+#step1, #step2, #step3 {
+  padding-left: 3% !important;
+  padding-right: 3% !important;
+}
+
+.ref-box {
+  padding-bottom: 55px !important;
+}
+
+.next:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.next i{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 22% 40%;
+  color: white;
+}
+
+.referral .pic {
+  border-radius: 50%;
+  max-width: 70%;
+  margin-bottom: 3%;
+}
+
 /* History */
 
 .custom-box .ref_description {
