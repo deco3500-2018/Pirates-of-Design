@@ -10,10 +10,12 @@ I have used their reference to make my own function. The function here is connec
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
+const Schema = mongoose.Schema;
 
 const UserSchema = mongoose.Schema({
   name: {
-    type:String
+    type:String,
+    required: true
   },
   email: {
     type: String,
@@ -42,6 +44,10 @@ const UserSchema = mongoose.Schema({
   isPhysician: {
     type: Boolean,
     required: true
+  },
+  hospitalId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Hospital'
   }
 }, {strict: false});
 
@@ -85,7 +91,8 @@ module.exports.updateUserById = function(u_user, callback){
     medicalnum: u_user.medicalnum,
     experience: u_user.experience,
     estimate_cost: u_user.estimate_cost,
-    isPhysician: u_user.isPhysician
+    isPhysician: u_user.isPhysician,
+    hospitalId: u_user.hospitalId
   };
   console.log(condition);
   User.findByIdAndUpdate(

@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const app = express();
 const users = require('./routes/users');
 const hospitals = require('./routes/hospitals');
+const referrals = require('./routes/referrals');
 const frontend = require('./routes/frontend');
 const port = 3000;
 const config = require('./config/database');
@@ -42,6 +43,9 @@ app.use('/users',users);
 
 //Hospitals Route
 app.use('/hospital',hospitals);
+
+//Referrals Route
+app.use('/referral',referrals);
 
 //Static Folder
 app.all('*', frontend);

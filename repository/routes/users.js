@@ -24,7 +24,8 @@ router.post('/register', (req, res, next) => {
     medicalnum: req.body.medicalnum,
     experience: req.body.experience,
     estimate_cost: req.body.estimate_cost,
-    isPhysician: req.body.isPhysician
+    isPhysician: req.body.isPhysician,
+    hospitalId: req.body.hospitalId
   });
 
   User.addUser( newUser, (err, user)=>{
@@ -74,7 +75,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 
 // Get all users
 router.get('/usersList', function(req, res){
-  User.find({}, ['name', 'email', 'phonum', 'medicalnum', 'experience', 'estimate_cost', 'isPhysician'], function(err,users){
+  User.find({}, ['name', 'email', 'phonum', 'medicalnum', 'experience', 'estimate_cost', 'isPhysician', 'hospitalId'], function(err,users){
     var userMap = {};
 
     users.forEach(function(user) {
