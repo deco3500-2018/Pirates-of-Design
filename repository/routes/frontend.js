@@ -18,6 +18,10 @@ router.get('/example', function (req, res) {
   res.send('Hello SomeRoute!');
 });
 
+router.get('/gp/referral/:id/backend', function (req, res) {
+  res.send(req.params)
+})
+
 router.use('/', express.static(path.join(__dirname, '../public')));
 router.use('/signup', express.static(path.join(__dirname, '../public/signup.html')));
 router.use('/login', express.static(path.join(__dirname, '../public/login.html')));
@@ -25,9 +29,11 @@ router.use('/login', express.static(path.join(__dirname, '../public/login.html')
 router.use('/gp/referral', express.static(path.join(__dirname, '../public/gp/referral.html')));
 router.use('/gp/history', express.static(path.join(__dirname, '../public/gp/history.html')));
 router.use('/gp/profile', express.static(path.join(__dirname, '../public/gp/profile.html')));
+router.use('/gp/referral/*', express.static(path.join(__dirname, '../public/gp/referral-detail.html')));
 
 router.use('/physician/referral', express.static(path.join(__dirname, '../public/physician/referral.html')));
 router.use('/physician/schedule', express.static(path.join(__dirname, '../public/physician/schedule.html')));
 router.use('/physician/profile', express.static(path.join(__dirname, '../public/physician/profile.html')));
+
 
 module.exports = router;
