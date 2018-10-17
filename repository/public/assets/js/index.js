@@ -43,6 +43,8 @@ $(document).ready(function() {
         success: function(result){
 
           eraseCookie('token');
+          eraseCookie('userId');
+          setCookie('userId',result.user._id,10);
           setCookie('token',result.token,10);
           x = getCookie('token');
 
