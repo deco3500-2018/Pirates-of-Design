@@ -41,7 +41,7 @@ router.get('/hospitalList', function(req, res){
       HospitalMap[Hospital._id] = Hospital;
     });
 
-    res.send(HospitalMap);
+    res.send(Hospitals);
   });
 });
 

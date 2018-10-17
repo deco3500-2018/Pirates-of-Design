@@ -86,6 +86,14 @@ router.get('/usersList', function(req, res){
   });
 });
 
+// Get all users
+router.get('/getPhysicians', function(req, res){
+  User.find({'isPhysician':1}, ['name', 'email', 'phonum', 'medicalnum', 'experience', 'estimate_cost', 'isPhysician', 'hospitalId'], function(err,users){
+    res.send(users);
+  });
+});
+
+
 // Delete UserS
 router.post('/deleteUser', (req, res, next) => {
   const d_email = req.body.email;

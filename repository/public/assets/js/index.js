@@ -7,27 +7,20 @@ $(document).ready(function() {
     $('#signup-menu').addClass('active');
 
     $.ajax({
-      url: 'http://localhost:3000/users/usersList',
+      url: 'http://localhost:3000/hospital/hospitallist',
       type: 'GET',
       dataType: 'json',
       success: function(result){
-        console.log(result);
+        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js", function(){
+          var options = {
+            valueNames: [ 'name', 'address' ],
+            item: '<div class="custom-box p-3 hospital-list"><h3 class="name"></h3><p class="address"></p></div>'
+          };
 
-        var options = {
-          valueNames: [ 'name', 'born' ],
-          item: '<li><h3 class="name"></h3><p class="born"></p></li>'
-        };
+          var values = result;
 
-        var values = [{
-          name: "Martina Elm",
-          born: 1986
-          }, {
-          name: "Martina Elm 2",
-          born: 1986
-          },
-        ];
-
-        var userList = new List('users', options, values);
+          var userList = new List('users', options, values);
+        });
 
         new jBox('Tooltip', {
           attach: '.tooltip'
