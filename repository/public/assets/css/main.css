@@ -124,6 +124,7 @@ input:checked + .slider:before { -webkit-transform: translateX(28px); -ms-transf
 .register .hospital-list h3 { font-size: 20px; }
 .register #hospitals {max-height: 300px; overflow-y: scroll;}
 .register .hospital-list .address {font-size: 90%; margin-bottom: 0px !important;}
+.jBox-content {background: #385c8d !important; color: white; font-weight: 700;}
 
 /* Calendar */
 .fc-center { font-size: 20px !important; text-transform: uppercase; font-family: 'Roboto', sans-serif !important; letter-spacing: 2px; }

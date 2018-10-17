@@ -30,6 +30,8 @@ $(document).ready(function() {
 
     $('.register-button').click(function(){
 
+      console.log('masuk');
+
       name = $('#inputName').val();
       email = $('#inputEmail').val();
       password = $('#inputPassword').val();
@@ -56,7 +58,22 @@ $(document).ready(function() {
           "hospitalId": hospitalId
         },
         success: function(result){
-          console.log(result);
+          $.getScript("/assets/third-party/notice/jbox.notice.js", function(){
+            console.log('masjk2');
+            setTimeout(function(){
+              new jBox('Notice', {
+                theme: 'NoticeFancy',
+                attributes: {
+                  x: 'left',
+                  y: 'bottom'
+                },
+                color: 'black',
+                content: 'Thank you for registering!<br/>Continue to log in',
+                animation: {open: 'slide:bottom', close: 'slide:left'}
+              });
+            }, 500)
+            
+          });
         }
       });
 
