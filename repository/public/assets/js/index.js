@@ -41,9 +41,16 @@ $(document).ready(function() {
           "password": password
         },
         success: function(result){
-          eraseCookie('test');
+
+          eraseCookie('token');
           setCookie('token',result.token,10);
           x = getCookie('token');
+
+          if (result.user.isPhysician){
+            window.location = '/physician/schedule';
+          } else {
+            window.location = '/gp/referral'
+          }
         }
       });
     })
