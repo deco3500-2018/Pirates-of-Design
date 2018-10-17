@@ -34,7 +34,7 @@
     <h4 class="font-mo text-bold">Go to your account</h4>
     <div class="register-box custom-box fill-60-viewport">
 
-      <form>
+      <div>
         <div class="row">
 
           <div class="col-md-4">
@@ -60,6 +60,16 @@
             </div>
 
             <div class="form-group">
+              <label for="inputExperience">Experience</label>
+              <input type="text" class="form-control custom-input" id="inputExperience" placeholder="Enter your experience in medical world">
+            </div>
+
+            <div class="form-group">
+              <label for="inputCost">Estimate Cost</label>
+              <input type="text" class="form-control custom-input" id="inputCost" placeholder="Enter your estimate cost">
+            </div>
+
+            <div class="form-group">
               <label for="inputPhonum">Phone Number</label>
               <input type="text" class="form-control custom-input" id="inputPhonum" placeholder="Enter your phone number">
             </div>
@@ -75,30 +85,33 @@
             <p class="disp-inline mr-3">GP</p>
             <label class="switch">
 
-              <input type="checkbox">
+              <input type="checkbox" id="isPhysician">
               <span class="slider round"></span>
 
             </label>
             <p class="disp-inline ml-3">Physician</p>
 
-            <button type="submit" class="btn custom-button register-button align-right text-up space-1">Sign Up</button>
+            <p class="text-bold mt-5">Chosen hospital: </p>
+            <div class="chosen-hospital hospital-list"></div>
 
             <p class="text-bold mt-5">Pick the hospital</p>
             <hr class="custom-hr align-left" align="left" />
 
-            <div id="users">
+            <div id="hospitals">
               <input class="search" placeholder="Search" />
               <button class="sort" data-sort="name">
                 Sort by name
               </button>
-              <ul class="list">
-              </ul>
+              <div class="list">
+              </div>
             </div>
+
+            <button type="submit" class="btn custom-button register-button align-right text-up space-1">Sign Up</button>
 
           </div>
 
         </div>
-      </form>
+      </div>
 
     </div>
   </div>

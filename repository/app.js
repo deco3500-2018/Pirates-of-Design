@@ -27,6 +27,10 @@ mongoose.connection.on('error', (err) => {
   console.log('Database error: '+ err);
 })
 
+// Body parser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 //CORS Middleware
 app.use(cors());
 

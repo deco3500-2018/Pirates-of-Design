@@ -16,6 +16,8 @@ const config = require('../config/database');
 
 //Register
 router.post('/register', (req, res, next) => {
+  res.setHeader("Content-Type", "application/json");
+
   let newUser = new User({
     name: req.body.name,
     email: req.body.email,
