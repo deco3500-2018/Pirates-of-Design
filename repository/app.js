@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const users = require('./routes/users');
@@ -26,6 +27,9 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', (err) => {
   console.log('Database error: '+ err);
 })
+
+// Cookie parser
+app.use(cookieParser());
 
 // Body parser
 app.use(bodyParser.urlencoded({ extended: true }));

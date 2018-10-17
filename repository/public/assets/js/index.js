@@ -1,7 +1,52 @@
 $(document).ready(function() {
 
+  function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  }
+  function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+  }
+  function eraseCookie(name) {
+      document.cookie = name+'=; Max-Age=-99999999;';
+  }
+
   if ($('.container').hasClass('login')){
     $('#login-menu').addClass('active');
+
+    $('.login-button').click(function(){
+      email = $('#inputEmail').val();
+      password = $('#inputPassword').val();
+
+      console.log('masuk');
+
+      $.ajax({
+        url: 'http://localhost:3000/users/authenticate',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          "email": email,
+          "password": password
+        },
+        success: function(result){
+          eraseCookie('test');
+          setCookie('token',result.token,10);
+          x = getCookie('token');
+        }
+      });
+    })
 
   } else if ( $('.container').hasClass('register')) {
     $('#signup-menu').addClass('active');
@@ -72,7 +117,7 @@ $(document).ready(function() {
                 animation: {open: 'slide:bottom', close: 'slide:left'}
               });
             }, 500)
-            
+
           });
         }
       });
