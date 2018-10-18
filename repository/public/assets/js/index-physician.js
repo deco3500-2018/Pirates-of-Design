@@ -150,6 +150,7 @@ $(document).ready(function() {
           if (result[i]){
             $('.waiting-approval').append(
               '<div class="custom-box p-3 each_referral mt-2">' +
+              '<p class="hidden hid_id">'+result[i]['_id']+'</p>'+
                 '<p class="box_title text-bold">' + result[i]["patient_name"]+'</p>' +
                 '<p class="box_date font-80">Thu, 16/16/2018 09:00 - 11:00</p>' +
                 '<br/>' +
@@ -160,6 +161,11 @@ $(document).ready(function() {
             )
           }
         }
+
+        $('.each_referral').click(function(){
+          id = $(this).children('.hid_id').text();
+          window.location = '/physician/referral/'+id;
+        });
 
       }
     });
@@ -173,6 +179,7 @@ $(document).ready(function() {
           if (result[i]){
             $('.latest-appointment').append(
               '<div class="custom-box p-3 each_referral mt-2">' +
+                '<p class="hidden hid_id">'+result[i]['_id']+'</p>'+
                 '<p class="box_title text-bold">' + result[i]["patient_name"]+'</p>' +
                 '<p class="box_date font-80">Thu, 16/16/2018 09:00 - 11:00</p>' +
                 '<br/>' +
@@ -184,12 +191,19 @@ $(document).ready(function() {
           }
         }
 
+        $('.each_referral').click(function(){
+          id = $(this).children('.hid_id').text();
+          window.location = '/physician/referral/'+id;
+        });
+
       }
     });
 
     $('.all-appointment').click(function(){
       window.location = '/physician/all-referral';
-    })
+    });
+
+
 
   } else if ( $('.container').hasClass('profile')) {
     $('#profile-menu').addClass('active');
@@ -256,9 +270,10 @@ $(document).ready(function() {
           var values = result;
           var userList = new List('referrals', options, values);
 
-          // $('.hospital-list').click(function() {
-          //   $('.chosen-hospital').html($(this).html());
-          // });
+          $('.referral-list').click(function(){
+            id = $(this).children('.hidden._id').text();
+            window.location = '/physician/referral/'+id;
+          });
         });
 
       }

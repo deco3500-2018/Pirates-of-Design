@@ -41,6 +41,7 @@
 
 /* All History */
 .all-history .referral-box {overflow-y: scroll;}
+.all-history .referral-list:hover{cursor: pointer;}
 .all-history .referral-list .hidden {display: none;}
 .all-history .referral-list {width: 100%; margin: 3% 0; font-size: 80%;}
 .all-history .referral-list h3 { font-size: 20px; }
