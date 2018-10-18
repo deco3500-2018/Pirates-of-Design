@@ -20,7 +20,7 @@ router.post('/addSchedule', (req, res, next) => {
     name: req.body.name,
     description: req.body.description,
     start_date: req.body.start_date,
-    end_date: req.body.start_date
+    end_date: req.body.end_date
   });
 
   Schedule.addSchedule( newSchedule, (err, Schedule)=>{
@@ -42,7 +42,7 @@ router.get('/scheduleList', function(req, res){
       ScheduleMap[Schedule._id] = Schedule;
     });
 
-    res.send(ScheduleMap);
+    res.send(Schedules);
   });
 });
 

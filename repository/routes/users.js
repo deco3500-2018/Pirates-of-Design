@@ -95,9 +95,16 @@ router.get('/usersList', function(req, res){
   });
 });
 
-// Get all users
+// Get physicians
 router.get('/getPhysicians', function(req, res){
   User.find({'isPhysician':1}, ['name', 'email', 'phonum', 'medicalnum', 'experience', 'estimate_cost', 'isPhysician', 'hospitalId'], function(err,users){
+    res.send(users);
+  });
+});
+
+// Get GP
+router.get('/getGP', function(req, res){
+  User.find({'isPhysician':0}, ['name', 'email', 'phonum', 'medicalnum', 'experience', 'estimate_cost', 'isPhysician', 'hospitalId'], function(err,users){
     res.send(users);
   });
 });

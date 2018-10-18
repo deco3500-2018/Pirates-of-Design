@@ -31,6 +31,14 @@ router.use('/signup', express.static(path.join(__dirname, '../public/signup.html
 router.use('/login', express.static(path.join(__dirname, '../public/login.html')));
 router.use('/chat/*', express.static(path.join(__dirname, '../public/chatpage.html')));
 
+router.get('/gp', function(req, res, next){
+  return res.redirect('/gp/referral');
+});
+
+router.get('/physician', function(req, res, next){
+  return res.redirect('/gp/referral');
+});
+
 router.use('/gp/referral', express.static(path.join(__dirname, '../public/gp/referral.html')));
 router.use('/gp/history', express.static(path.join(__dirname, '../public/gp/history.html')));
 router.use('/gp/history-all', express.static(path.join(__dirname, '../public/gp/all-history.html')));
