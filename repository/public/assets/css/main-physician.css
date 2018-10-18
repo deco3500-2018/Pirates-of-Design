@@ -38,3 +38,16 @@
 .ref-detail p{margin-bottom: 0px;}
 
 .ref-detail .row {margin-top: 5%;}
+
+/* All History */
+.all-history .referral-box {overflow-y: scroll;}
+.all-history .referral-list .hidden {display: none;}
+.all-history .referral-list {width: 100%; margin: 3% 0; font-size: 80%;}
+.all-history .referral-list h3 { font-size: 20px; }
+.all-history .referral-list p {font-size: 100%; display: inline;}
+.all-history .referral-list .address {font-size: 90%; margin-bottom: 0px !important;}
+.all-history .referral-list hr {margin: 3px 0px;}
+#referrals .list { margin-top: 5%; }
+#referrals .search { padding-left: 3%; background: white; width: 80%; border-radius: 10px; border: 1px solid #5288f3;}
+#referrals .search:focus {box-shadow: 0 0 0 0 rgba(0,123,255,.25) !important; outline: 0px !important}
+#referrals .sort { background: #5288f3; color: white; font-weight: 700; padding-top: 2px; padding-bottom: 2px;}

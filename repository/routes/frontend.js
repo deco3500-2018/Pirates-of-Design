@@ -38,6 +38,7 @@ router.use('/gp/profile', express.static(path.join(__dirname, '../public/gp/prof
 router.use('/gp/referral/*', express.static(path.join(__dirname, '../public/gp/referral-detail.html')));
 
 router.use('/physician/referral', express.static(path.join(__dirname, '../public/physician/referral.html')));
+router.use('/physician/all-referral', express.static(path.join(__dirname, '../public/physician/all-history.html')));
 router.use('/physician/schedule', express.static(path.join(__dirname, '../public/physician/schedule.html')));
 router.use('/physician/profile', express.static(path.join(__dirname, '../public/physician/profile.html')));
 router.use('/physician/referral/*', express.static(path.join(__dirname, '../public/physician/referral-detail.html')));
