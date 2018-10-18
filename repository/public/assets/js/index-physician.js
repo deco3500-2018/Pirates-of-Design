@@ -24,6 +24,33 @@ $(document).ready(function() {
       document.cookie = name+'=; Max-Age=-99999999;';
   }
 
+  if (getCookie('userId') == null){
+    $.ajax({
+      url: 'http://localhost:3000/users/getphysicians',
+      method: 'GET',
+      success: function(result){
+        setCookie('userId', result[0]['_id']);
+
+        $.getScript("/assets/third-party/notice/jbox.notice.js", function(){
+          setTimeout(function(){
+            new jBox('Notice', {
+              theme: 'NoticeFancy',
+              attributes: {
+                x: 'left',
+                y: 'bottom'
+              },
+              color: 'black',
+              content: 'You are assigned as GP '+ result[0]['name'],
+              animation: {open: 'slide:bottom', close: 'slide:left'}
+            });
+          }, 500)
+
+        });
+
+      }
+    })
+  }
+
   $('#logout-menu').click(function(){
     setCookie('token', '');
     setCookie('userId', '');
@@ -166,6 +193,25 @@ $(document).ready(function() {
 
   } else if ( $('.container').hasClass('profile')) {
     $('#profile-menu').addClass('active');
+
+    $.ajax({
+      url: 'http://localhost:3000/users/profile',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        'id': getCookie('userId')
+      },
+      success: function(result){
+        $('.name').text(result[0]["name"]);
+
+        $('.email').text(result[0]["email"]);
+        $('.phonum').text('Phone number: '+result[0]["phonum"]);
+        $('.experience').text('Experience: ' + result[0]["experience"] + ' years');
+        $('.estimate_cost').text('Estimate cost: $'+result[0]["estimate_cost"]);
+
+        $('.medical_id').text(result[0]["medicalnum"]);
+      }
+    });
 
   } else if ( $('.container').hasClass('ref-detail')) {
     console.log(window.location.href);
