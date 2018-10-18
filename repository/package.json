@@ -18,7 +18,8 @@
     "jsonwebtoken": "*",
     "mongoose": "*",
     "passport": "*",
-    "passport-jwt": "*"
+    "passport-jwt": "*",
+    "socket.io": "^2.1.1"
   },
   "author": "Keyne Oei",
   "license": "ISC"

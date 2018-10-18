@@ -95,6 +95,15 @@ $(document).ready(function() {
   } else if ( $('.container').hasClass('profile')) {
     $('#profile-menu').addClass('active');
 
+    $.ajax({
+      url: 'http://localhost:3000/users/profile',
+      type: 'GET',
+      dataType: 'json',
+      success: function(result){
+        console.log(result);
+      }
+    })
+
   } else if ( $('.container').hasClass('ref-detail')) {
     console.log(window.location.href);
 

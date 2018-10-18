@@ -13,6 +13,11 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const config = require('../config/database');
+const app = express();
+
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+var socket = require('socket.io');
 
 //Register
 router.post('/register', (req, res, next) => {
@@ -39,7 +44,6 @@ router.post('/register', (req, res, next) => {
   })
 });
 
-
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
   const email = req.body.email;
@@ -57,6 +61,9 @@ router.post('/authenticate', (req, res, next) => {
         const token = jwt.sign(user.toJSON(), config.secret, {
           expiresIn: 604800 // 1 week
         });
+
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Authorization', 'bearer ' + token);
 
         res.json({
           success: true,
@@ -111,5 +118,11 @@ router.post('/updateUser', (req, res, next) => {
     res.json({success:true, data: user});
   });
 })
+
+// Try chat
+router.get('/chat', (req, res, next) =>{
+
+})
+
 
 module.exports = router;

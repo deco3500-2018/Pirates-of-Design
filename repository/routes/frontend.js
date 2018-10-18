@@ -29,6 +29,7 @@ router.get('/physician/referral/:id/backend', function (req, res) {
 router.use('/', express.static(path.join(__dirname, '../public')));
 router.use('/signup', express.static(path.join(__dirname, '../public/signup.html')));
 router.use('/login', express.static(path.join(__dirname, '../public/login.html')));
+router.use('/chat/*', express.static(path.join(__dirname, '../public/chatpage.html')));
 
 router.use('/gp/referral', express.static(path.join(__dirname, '../public/gp/referral.html')));
 router.use('/gp/history', express.static(path.join(__dirname, '../public/gp/history.html')));
@@ -39,6 +40,5 @@ router.use('/physician/referral', express.static(path.join(__dirname, '../public
 router.use('/physician/schedule', express.static(path.join(__dirname, '../public/physician/schedule.html')));
 router.use('/physician/profile', express.static(path.join(__dirname, '../public/physician/profile.html')));
 router.use('/physician/referral/*', express.static(path.join(__dirname, '../public/physician/referral-detail.html')));
-
 
 module.exports = router;
