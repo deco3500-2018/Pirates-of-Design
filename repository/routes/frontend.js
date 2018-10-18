@@ -12,18 +12,25 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
+const Referral = require('../models/Referral');
 const path = require('path');
 
 router.get('/example', function (req, res) {
   res.send('Hello SomeRoute!');
 });
 
+// referral-detail
 router.get('/gp/referral/:id/backend', function (req, res) {
-  res.send(req.params)
+  Referral.find({'_id': req.params.id}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at'], function(err,Referrals){
+    res.send(Referrals);
+  });
 })
 
+
 router.get('/physician/referral/:id/backend', function (req, res) {
-  res.send(req.params)
+  Referral.find({'_id': req.params.id}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at'], function(err,Referrals){
+    res.send(Referrals);
+  });
 })
 
 router.use('/', express.static(path.join(__dirname, '../public')));

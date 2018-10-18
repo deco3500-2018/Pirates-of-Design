@@ -220,7 +220,21 @@ $(document).ready(function() {
       url: window.location.href+'/backend',
       method: 'GET',
       success: function(response){
-        $('.ref-title').text('Referral #'+ response["id"])
+        console.log(response);
+        $('.ref-title').text('Referral #'+ response[0]["_id"])
+
+        $('.patient_name').text(response[0]['patient_name']);
+        $('.patient_address').text(response[0]['patient_address']);
+        $('.patient_phonum').text(response[0]['patient_phonum']);
+
+        $('.name').text(response[0]['name']);
+        $('.description').text(response[0]['description']);
+
+        $('.gp_id').text(response[0]['gp_id']);
+        $('.physician_id').text(response[0]['physician_id']);
+
+        $('.chat-link').attr('href','/chat/' + response[0]['_id']);
+
       }
     })
 
