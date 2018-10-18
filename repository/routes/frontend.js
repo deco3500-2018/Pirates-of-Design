@@ -33,6 +33,7 @@ router.use('/chat/*', express.static(path.join(__dirname, '../public/chatpage.ht
 
 router.use('/gp/referral', express.static(path.join(__dirname, '../public/gp/referral.html')));
 router.use('/gp/history', express.static(path.join(__dirname, '../public/gp/history.html')));
+router.use('/gp/history-all', express.static(path.join(__dirname, '../public/gp/all-history.html')));
 router.use('/gp/profile', express.static(path.join(__dirname, '../public/gp/profile.html')));
 router.use('/gp/referral/*', express.static(path.join(__dirname, '../public/gp/referral-detail.html')));
 

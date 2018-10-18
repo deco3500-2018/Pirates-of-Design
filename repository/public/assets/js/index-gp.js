@@ -115,6 +115,31 @@ $(document).ready(function() {
       }
     })
 
+  } else if ( $('.container').hasClass('all-history')) {
+    console.log('all-history');
+
+    $.ajax({
+      url: 'http://localhost:3000/referral/referrallist',
+      type: 'GET',
+      dataType: 'json',
+      success: function(result){
+        console.log(result);
+        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js", function(){
+          var options = {
+            valueNames: [ '_id', 'name', 'patient_name' ],
+            item: '<div class="my-2 referral-list"><p class="hidden _id"></p><h3 class="name"></h3>Patient name: <p class="patient_name"></p><br/>Thu, 16 Oct 2018<hr/></div>'
+          };
+
+          var values = result;
+          var userList = new List('referrals', options, values);
+
+          // $('.hospital-list').click(function() {
+          //   $('.chosen-hospital').html($(this).html());
+          // });
+        });
+
+      }
+    });
   }
 
 });

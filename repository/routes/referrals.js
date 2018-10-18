@@ -47,7 +47,7 @@ router.get('/referralList', function(req, res){
       ReferralMap[Referral._id] = Referral;
     });
 
-    res.send(ReferralMap);
+    res.send(Referrals);
   });
 });
 
