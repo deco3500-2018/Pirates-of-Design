@@ -78,8 +78,12 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 // Profile
-router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-  res.json({user: req.user});
+router.post('/profile', function (req, res){
+  const u_id = req.body.id;
+
+  User.find({'_id':u_id}, ['name', 'email', 'phonum', 'medicalnum', 'experience', 'estimate_cost', 'isPhysician', 'hospitalId'], function(err,users){
+    res.send(users);
+  })
 });
 
 // Get all users

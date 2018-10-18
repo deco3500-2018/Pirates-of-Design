@@ -77,13 +77,13 @@ $(document).ready(function() {
   if ($('.container').hasClass('referral')){
     $('#referral-menu').addClass('active');
     $('.next-1').click(function() {
-      // $.getScript("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", function(){
-      //   $('#addModal').modal();
-      //   $('#datetimepicker1').datetimepicker({});
-      //   $('#datetimepicker2').datetimepicker({});
-      //  });
+      $.getScript("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", function(){
+        $('#addModal').modal();
+        $('#datetimepicker1').datetimepicker({});
+        $('#datetimepicker2').datetimepicker({});
+       });
 
-       gotoStep2();
+       // gotoStep2();
     });
 
     $('.next-2').click(function() {
@@ -283,11 +283,22 @@ $(document).ready(function() {
 
     $.ajax({
       url: 'http://localhost:3000/users/profile',
-      type: 'GET',
+      type: 'POST',
       dataType: 'json',
+      data: {
+        'id': getCookie('userId')
+      },
       success: function(result){
+        $('.name').text(result[0]["name"]);
+
+        $('.email').text(result[0]["email"]);
+        $('.phonum').text('Phone number: '+result[0]["phonum"]);
+        $('.experience').text('Experience: ' + result[0]["experience"] + ' years');
+        $('.estimate_cost').text('Estimate cost: $'+result[0]["estimate_cost"]);
+
+        $('.medical_id').text(result[0]["medicalnum"]);
       }
-    })
+    });
 
   } else if ( $('.container').hasClass('ref-detail')) {
     console.log(window.location.href);
