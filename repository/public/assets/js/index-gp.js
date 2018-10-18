@@ -147,14 +147,8 @@ $(document).ready(function() {
       start_date = $('#start_date').val();
       end_date = $('#end_date').val();
 
-      console.log(start_date);
-      console.log(end_date);
-
       start_moment = moment(start_date, 'MM/DD/YYYY h:mm A');
       end_moment = moment(end_date, 'MM/DD/YYYY h:mm A');
-
-      console.log(start_moment);
-      console.log(end_moment);
 
       $.ajax({
         url: 'http://localhost:3000/schedules/addschedule',

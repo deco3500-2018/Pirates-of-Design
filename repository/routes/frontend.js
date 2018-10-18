@@ -36,7 +36,7 @@ router.get('/gp', function(req, res, next){
 });
 
 router.get('/physician', function(req, res, next){
-  return res.redirect('/gp/referral');
+  return res.redirect('/physician/schedule');
 });
 
 router.use('/gp/referral', express.static(path.join(__dirname, '../public/gp/referral.html')));

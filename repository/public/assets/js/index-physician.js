@@ -40,19 +40,37 @@ $(document).ready(function() {
           center: 'title, addEventButton',
           right: 'month, agendaWeek, agendaDay',
         },
-        defaultDate: '2018-03-12',
+        defaultDate: new Date(),
         defaultView: 'agendaWeek',
         minTime:'08:00:00',
         maxTime:'19:00:00',
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         eventLimit: true, // allow "more" link when too many events
-        events: [
-          {
-            title: 'Meeting',
-            start: '2018-03-12T10:30:00',
-            end: '2018-03-12T12:30:00'
-          }
+        eventSources: [
+            {
+                events: function(start, end, timezone, callback) {
+                    $.ajax({
+                        url: 'http://localhost:3000/schedules/schedulelist',
+                        dataType: 'json',
+                        method: 'GET',
+                        success: function(msg) {
+                          var i = 0;
+                          var events = msg;
+                          $.each(events,function() {
+                            start = moment(events[i]["start_date"]);
+                            end = moment(events[i]["end_date"]);
+                            events[i]["start"] = start;
+                            events[i]["end"] = end;
+                            events[i]["title"] = events[i]["name"];
+                            i++;
+                          });
+                          callback(events);
+
+                        }
+                    });
+                }
+            },
         ],
         dayClick: function(date, jsEvent, view) {
           $.getScript("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", function(){
@@ -64,14 +82,87 @@ $(document).ready(function() {
       });
     });
 
-    $('#addEventBtn').click(function() {
-      console.log($('#name').val());
-      $('#addModal').modal('hide');
+    $('#addEventBtn').click(function(){
+      name = $('#name').val();
+      description = $('#description').val();
+      start_date = $('#start_date').val();
+      end_date = $('#end_date').val();
+
+      start_moment = moment(start_date, 'MM/DD/YYYY h:mm A');
+      end_moment = moment(end_date, 'MM/DD/YYYY h:mm A');
+
+      $.ajax({
+        url: 'http://localhost:3000/schedules/addschedule',
+        method: 'POST',
+        type: 'json',
+        data: {
+          name: name,
+          description: description,
+          start_date: start_moment.format(),
+          end_date: end_moment.format()
+        },
+        success: function(result){
+          console.log(result);
+          $('#addModal').modal('hide');
+          gotoStep2();
+        }
+      })
+
     })
 
 
   } else if ( $('.container').hasClass('referral')) {
     $('#referral-menu').addClass('active');
+
+    $.ajax({
+      url: 'http://localhost:3000/referral/referrallist',
+      method: 'GET',
+      success: function(result){
+
+        for (i=0; i<3; i++){
+          if (result[i]){
+            $('.waiting-approval').append(
+              '<div class="custom-box p-3 each_referral mt-2">' +
+                '<p class="box_title text-bold">' + result[i]["patient_name"]+'</p>' +
+                '<p class="box_date font-80">Thu, 16/16/2018 09:00 - 11:00</p>' +
+                '<br/>' +
+                '<p class="ref_title font-80 text-bold">'+ result[i]["name"]+'</p>' +
+                '<p class="ref_description font-80">'+ result[i]["description"]+'</p>' +
+
+              '</div>'
+            )
+          }
+        }
+
+      }
+    });
+
+    $.ajax({
+      url: 'http://localhost:3000/referral/referrallist',
+      method: 'GET',
+      success: function(result){
+
+        for (i=0; i<3; i++){
+          if (result[i]){
+            $('.latest-appointment').append(
+              '<div class="custom-box p-3 each_referral mt-2">' +
+                '<p class="box_title text-bold">' + result[i]["patient_name"]+'</p>' +
+                '<p class="box_date font-80">Thu, 16/16/2018 09:00 - 11:00</p>' +
+                '<br/>' +
+                '<p class="ref_title font-80 text-bold">'+ result[i]["name"]+'</p>' +
+                '<p class="ref_description font-80">'+ result[i]["description"]+'</p>' +
+
+              '</div>'
+            )
+          }
+        }
+
+      }
+    });
+
+    $('.all-appointment').click(function(){
+      window.location = '/physician/all-referral';
+    })
 
   } else if ( $('.container').hasClass('profile')) {
     $('#profile-menu').addClass('active');
