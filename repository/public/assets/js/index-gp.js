@@ -23,6 +23,33 @@ $(document).ready(function() {
       document.cookie = name+'=; Max-Age=-99999999;';
   }
 
+  if (getCookie('userId') == null){
+    $.ajax({
+      url: 'http://localhost:3000/users/getgp',
+      method: 'GET',
+      success: function(result){
+        setCookie('userId', result[0]['_id']);
+
+        $.getScript("/assets/third-party/notice/jbox.notice.js", function(){
+          setTimeout(function(){
+            new jBox('Notice', {
+              theme: 'NoticeFancy',
+              attributes: {
+                x: 'left',
+                y: 'bottom'
+              },
+              color: 'black',
+              content: 'You are assigned as GP '+ result[0]['name'],
+              animation: {open: 'slide:bottom', close: 'slide:left'}
+            });
+          }, 500)
+
+        });
+
+      }
+    })
+  }
+
   $('#logout-menu').click(function(){
     setCookie('token', '');
     setCookie('userId', '');
@@ -62,33 +89,6 @@ $(document).ready(function() {
     $('.next-2').click(function() {
       gotoStep3();
     });
-
-    if (getCookie('userId') == null){
-      $.ajax({
-        url: 'http://localhost:3000/users/getgp',
-        method: 'GET',
-        success: function(result){
-          setCookie('userId', result[0]['_id']);
-
-          $.getScript("/assets/third-party/notice/jbox.notice.js", function(){
-            setTimeout(function(){
-              new jBox('Notice', {
-                theme: 'NoticeFancy',
-                attributes: {
-                  x: 'left',
-                  y: 'bottom'
-                },
-                color: 'black',
-                content: 'You are assigned as GP '+ result[0]['name'],
-                animation: {open: 'slide:bottom', close: 'slide:left'}
-              });
-            }, 500)
-
-          });
-
-        }
-      })
-    }
 
     $.getScript("https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.js", function(){
       $('#calendar').fullCalendar({
@@ -249,6 +249,34 @@ $(document).ready(function() {
 
   } else if ( $('.container').hasClass('history')) {
     $('#history-menu').addClass('active');
+
+    $.ajax({
+      url: 'http://localhost:3000/referral/referrallist',
+      method: 'GET',
+      success: function(result){
+        console.log(result);
+
+        for (i=0; i<3; i++){
+          if (result[i]){
+            $('.latest-referral').append(
+              '<div class="custom-box p-3 each_referral mt-2">' +
+                '<p class="box_title text-bold">' + result[i]["patient_name"]+'</p>' +
+                '<p class="box_date font-80">Thu, 16/16/2018 09:00 - 11:00</p>' +
+                '<br/>' +
+                '<p class="ref_title font-80 text-bold">'+ result[i]["name"]+'</p>' +
+                '<p class="ref_description font-80">'+ result[i]["description"]+'</p>' +
+
+              '</div>'
+            )
+          }
+        }
+
+      }
+    });
+
+    $('.all-appointment').click(function(){
+      window.location = '/gp/history-all';
+    })
 
   } else if ( $('.container').hasClass('profile')) {
     $('#profile-menu').addClass('active');
