@@ -77,7 +77,7 @@ $(document).ready(function() {
   if ($('.container').hasClass('referral')){
     $('#referral-menu').addClass('active');
     $('.next-1').click(function() {
-      $.getScript("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", function(){
+      $.getScript("/assets/third-party/bootstrap.min.js", function(){
         $('#addModal').modal();
         $('#datetimepicker1').datetimepicker({});
         $('#datetimepicker2').datetimepicker({});
@@ -90,7 +90,7 @@ $(document).ready(function() {
       gotoStep3();
     });
 
-    $.getScript("https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.js", function(){
+    $.getScript("/assets/third-party/fullcalendar.js", function(){
       $('#calendar').fullCalendar({
         header: {
           left: 'prev,next today',
@@ -130,7 +130,7 @@ $(document).ready(function() {
         ],
         dayClick: function(date, jsEvent, view) {
 
-          $.getScript("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", function(){
+          $.getScript("/assets/third-party/bootstrap.min.js", function(){
             $('#addModal').modal();
             $('#datetimepicker1').datetimepicker({});
             $('#datetimepicker2').datetimepicker({});
@@ -205,7 +205,7 @@ $(document).ready(function() {
     })
 
     $('.next-3').click(function(){
-      $.getScript('https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js', function(){
+      $.getScript('/assets/third-party/jquery-confirm.min.js', function(){
         $.confirm({
           title: 'Confirm!',
           content: 'Simple confirm!',
@@ -333,7 +333,7 @@ $(document).ready(function() {
       type: 'GET',
       dataType: 'json',
       success: function(result){
-        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js", function(){
+        $.getScript("/assets/third-party/list.min.js", function(){
           var options = {
             valueNames: [ '_id', 'name', 'patient_name' ],
             item: '<div class="my-2 referral-list"><p class="hidden _id"></p><h3 class="name"></h3>Patient name: <p class="patient_name"></p><br/>Thu, 16 Oct 2018<hr/></div>'

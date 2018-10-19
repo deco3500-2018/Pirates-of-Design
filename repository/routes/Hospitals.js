@@ -14,6 +14,8 @@ const jwt = require('jsonwebtoken');
 const Hospital = require('../models/Hospital');
 const config = require('../config/database');
 
+
+
 //Register
 router.post('/addHospital', (req, res, next) => {
   let newHospital = new Hospital({
