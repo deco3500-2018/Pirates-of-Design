@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
-  base_url = 'http://localhost:3000/';
-  // base_url = 'https://easyreferral.herokuapp.com/';
+  // base_url = 'http://localhost:3000/';
+  base_url = 'https://easyreferral.herokuapp.com/';
 
   function setCookie(name,value,days) {
     var expires = "";
