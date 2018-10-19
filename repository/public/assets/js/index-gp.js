@@ -25,32 +25,31 @@ $(document).ready(function() {
       document.cookie = name+'=; Max-Age=-99999999;';
   }
 
-  if (getCookie('userId') == null){
-    $.ajax({
-      url: base_url + 'users/getgp',
-      method: 'GET',
-      success: function(result){
-        setCookie('userId', result[0]['_id']);
+  eraseCookie('userId');
+  $.ajax({
+    url: base_url + 'users/getgp',
+    method: 'GET',
+    success: function(result){
+      setCookie('userId', result[0]['_id']);
 
-        $.getScript("/assets/third-party/notice/jbox.notice.js", function(){
-          setTimeout(function(){
-            new jBox('Notice', {
-              theme: 'NoticeFancy',
-              attributes: {
-                x: 'left',
-                y: 'bottom'
-              },
-              color: 'black',
-              content: 'You are assigned as GP '+ result[0]['name'],
-              animation: {open: 'slide:bottom', close: 'slide:left'}
-            });
-          }, 500)
+      $.getScript("/assets/third-party/notice/jbox.notice.js", function(){
+        setTimeout(function(){
+          new jBox('Notice', {
+            theme: 'NoticeFancy',
+            attributes: {
+              x: 'left',
+              y: 'bottom'
+            },
+            color: 'black',
+            content: 'You are assigned as GP '+ result[0]['name'],
+            animation: {open: 'slide:bottom', close: 'slide:left'}
+          });
+        }, 500)
 
-        });
+      });
 
-      }
-    })
-  }
+    }
+  })
 
   $('#logout-menu').click(function(){
     setCookie('token', '');
