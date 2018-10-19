@@ -36,6 +36,7 @@ router.get('/physician/referral/:id/backend', function (req, res) {
 router.use('/', express.static(path.join(__dirname, '../public')));
 router.use('/signup', express.static(path.join(__dirname, '../public/signup.html')));
 router.use('/login', express.static(path.join(__dirname, '../public/login.html')));
+router.use('/aboutus', express.static(path.join(__dirname, '../public/aboutus.html')));
 router.use('/chat/*', express.static(path.join(__dirname, '../public/chatpage.html')));
 
 router.get('/gp', function(req, res, next){

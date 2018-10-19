@@ -1,0 +1,30 @@
+
+
+<div id="header"></div>
+<div id="header_content"></div>
+
+<script src="/assets/third-party/jquery-3.3.1.js"></script>
+<script>
+  $(function(){
+    $('#header').load('template/header.html');
+    $('#header_content').load('template/header_content.html');
+    $('#footer_content').load('template/footer_content.html');
+    $('#footer').load('template/footer.html');
+
+    var script = document.createElement('script');
+    script.src = 'assets/js/index.js';
+    script.setAttribute('src','assets/js/index.js');
+    document.getElementsByTagName("script")[0].parentNode.appendChild(script);
+  })
+</script>
+
+
+<div class="container aboutus">
+  <h1> Check out our git </h1>
+  <a href="https://github.com/deco3500-2018/Pirates-of-Design">Github</a>
+</div>
+
+<!-- <script src="/assets/js/index.js"></script> -->
+
+<div id="footer_content"></div>
+<div id="footer"></div>

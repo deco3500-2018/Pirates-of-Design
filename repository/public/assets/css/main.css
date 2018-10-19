@@ -87,11 +87,47 @@ input:checked + .slider:before { -webkit-transform: translateX(28px); -ms-transf
 .slider.round { border-radius: 28px; }
 .slider.round:before { border-radius: 50%;}
 
+.go-back {
+  background: #c33335;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 5px;
+  font-weight: 700;
+  font-size: 80%;
+  margin-bottom: 5%;
+}
+
+.go-back:hover {color: white;}
+
 /* Header */
 .header_content .title { line-height: 5px; }
 .header_content nav a{ color: black; font-size: 80%; text-transform: uppercase; letter-spacing: 1px}
 .active { border-bottom: 5px solid #5288f3; }
 .header_content .header_logo { max-height: 50px; margin-left: 40%;}
+
+/* Home */
+
+.home .gp {
+  text-align: center;
+  color: white;
+  background: linear-gradient(to bottom, rgba(82,136,243,1), rgba(0,0,0,0.8)), url('https://cdn1.medicalnewstoday.com/content/images/articles/318/318016/doctors-talking.jpg') 0% 0%/cover;
+}
+
+.home .patient {
+  text-align: center;
+  color: white;
+  background: linear-gradient(to bottom, rgba(229,209,208,1), rgba(0,0,0,0.8)), url('https://www.cloudninecare.com/wp-content/themes/cloudninecare/images/ot.jpg') 0% 0%/cover;
+}
+
+.home .patient img {max-width:100%; width: 30%;}
+.home .physician {
+  color: white;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(195,51,53,1), rgba(0,0,0,0.8)), url('https://www.healthcarelink.com.au/blog/wp-content/uploads/2017/02/doctor-and-patient-art-6b7bbfdda5c09479.jpg') 0% 0%/cover;
+}
+
+.home .col-md-4 a{background: white; padding: 2% 5%; font-size: 80%; border-radius: 10px; color: black;}
+.home .gp .fas, .home .physician .fas, .home .patient .fas {margin-top: 100%; color: white; font-size: 50px;}
 
 /* Login  */
 .login {margin-top: 5%;}

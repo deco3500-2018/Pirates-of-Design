@@ -140,6 +140,8 @@ $(document).ready(function() {
 
   } else if ( $('.container').hasClass('home')) {
     $('#home-menu').addClass('active');
+  } else if ( $('.container').hasClass('aboutus')) {
+    $('#about-menu').addClass('active');
   }
 
 
