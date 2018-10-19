@@ -115,7 +115,7 @@ $(document).ready(function() {
           "hospitalId": hospitalId
         },
         success: function(result){
-          $.getScript("/assets/third-party/notice/jbox.notice.js", function(){
+          $.getScript("/assets/third-party/Notice/jBox.Notice.js", function(){
             console.log('masjk2');
             setTimeout(function(){
               new jBox('Notice', {

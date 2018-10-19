@@ -32,7 +32,7 @@ $(document).ready(function() {
     success: function(result){
       setCookie('userId', result[0]['_id']);
 
-      $.getScript("/assets/third-party/notice/jbox.notice.js", function(){
+      $.getScript("/assets/third-party/Notice/jBox.Notice.js", function(){
         setTimeout(function(){
           new jBox('Notice', {
             theme: 'NoticeFancy',
@@ -214,7 +214,7 @@ $(document).ready(function() {
               confirm: function () {
                 gotoStep1();
 
-                $.getScript("/assets/third-party/notice/jbox.notice.js", function(){
+                $.getScript("/assets/third-party/Notice/jBox.Notice.js", function(){
                   setTimeout(function(){
                     new jBox('Notice', {
                       theme: 'NoticeFancy',
