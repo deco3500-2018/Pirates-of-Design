@@ -8,12 +8,12 @@ const cookieParser = require('cookie-parser');
 const http = require('http');
 
 const app = express();
-const users = require('./routes/users');
-const hospitals = require('./routes/hospitals');
-const referrals = require('./routes/referrals');
-const schedules = require('./routes/schedules');
-const frontend = require('./routes/frontend');
-const port = 3000;
+const users = require('./routes/Users');
+const hospitals = require('./routes/Hospitals');
+const referrals = require('./routes/Referrals');
+const schedules = require('./routes/Schedules');
+const frontend = require('./routes/Frontend');
+const port = process.env.PORT || 3000;
 const config = require('./config/database');
 
 const server = http.createServer(app);
