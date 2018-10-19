@@ -20,7 +20,8 @@ const server = http.createServer(app);
 const io = require('socket.io').listen(server);
 
 //Connect with database
-mongoose.connect(config.database, { useNewUrlParser: true });
+// mongoose.connect(config.database, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI);
 
 //On Connection
 mongoose.connection.on('connected', () => {

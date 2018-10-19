@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+  // base_url = 'https://easyreferral.herokuapp.com/';
+  base_url = 'http://localhost:3000/';
+
   function setCookie(name,value,days) {
     var expires = "";
     if (days) {
@@ -33,7 +36,7 @@ $(document).ready(function() {
       console.log('masuk');
 
       $.ajax({
-        url: 'http://localhost:3000/users/authenticate',
+        url: base_url + 'users/authenticate',
         type: 'POST',
         dataType: 'json',
         data: {
@@ -61,7 +64,7 @@ $(document).ready(function() {
     $('#signup-menu').addClass('active');
 
     $.ajax({
-      url: 'http://localhost:3000/hospital/hospitallist',
+      url: base_url + 'hospital/hospitallist',
       type: 'GET',
       dataType: 'json',
       success: function(result){
@@ -97,7 +100,7 @@ $(document).ready(function() {
       hospitalId = $('.chosen-hospital .hidden._id').text();
 
       $.ajax({
-        url: 'http://localhost:3000/users/register',
+        url: base_url + 'users/register',
         type: 'POST',
         dataType: 'json',
         data: {

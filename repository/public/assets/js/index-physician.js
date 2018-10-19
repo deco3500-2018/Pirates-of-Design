@@ -1,5 +1,7 @@
 
 $(document).ready(function() {
+  base_url = 'http://localhost:3000/';
+  // base_url = 'https://easyreferral.herokuapp.com/';
 
   function setCookie(name,value,days) {
     var expires = "";
@@ -26,7 +28,7 @@ $(document).ready(function() {
 
   if (getCookie('userId') == null){
     $.ajax({
-      url: 'http://localhost:3000/users/getphysicians',
+      url: base_url + 'users/getphysicians',
       method: 'GET',
       success: function(result){
         setCookie('userId', result[0]['_id']);
@@ -78,7 +80,7 @@ $(document).ready(function() {
             {
                 events: function(start, end, timezone, callback) {
                     $.ajax({
-                        url: 'http://localhost:3000/schedules/schedulelist',
+                        url: base_url + 'schedules/schedulelist',
                         dataType: 'json',
                         method: 'GET',
                         success: function(msg) {
@@ -119,7 +121,7 @@ $(document).ready(function() {
       end_moment = moment(end_date, 'MM/DD/YYYY h:mm A');
 
       $.ajax({
-        url: 'http://localhost:3000/schedules/addschedule',
+        url: base_url + 'schedules/addschedule',
         method: 'POST',
         type: 'json',
         data: {
@@ -142,7 +144,7 @@ $(document).ready(function() {
     $('#referral-menu').addClass('active');
 
     $.ajax({
-      url: 'http://localhost:3000/referral/referrallist',
+      url: base_url + 'referral/referrallist',
       method: 'GET',
       success: function(result){
 
@@ -171,7 +173,7 @@ $(document).ready(function() {
     });
 
     $.ajax({
-      url: 'http://localhost:3000/referral/referrallist',
+      url: base_url + 'referral/referrallist',
       method: 'GET',
       success: function(result){
 
@@ -209,7 +211,7 @@ $(document).ready(function() {
     $('#profile-menu').addClass('active');
 
     $.ajax({
-      url: 'http://localhost:3000/users/profile',
+      url: base_url + 'users/profile',
       type: 'POST',
       dataType: 'json',
       data: {
@@ -256,7 +258,7 @@ $(document).ready(function() {
     console.log('all-history');
 
     $.ajax({
-      url: 'http://localhost:3000/referral/referrallist',
+      url: base_url + 'referral/referrallist',
       type: 'GET',
       dataType: 'json',
       success: function(result){
