@@ -21,7 +21,7 @@ const io = require('socket.io').listen(server);
 
 //Connect with database
 // mongoose.connect(config.database, { useNewUrlParser: true });
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || config.database, {useNewUrlParser: true});
 
 //On Connection
 mongoose.connection.on('connected', () => {
