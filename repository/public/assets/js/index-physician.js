@@ -244,6 +244,7 @@ $(document).ready(function() {
         $('.patient_address').text('Address: ' + response[0]['patient_address']);
         $('.patient_phonum').text('Phone Number: ' + response[0]['patient_phonum']);
 
+        $('.category').text('Category: ' + response[0]['category']);
         $('.name').text(response[0]['name']);
         $('.description').text(response[0]['description']);
 
@@ -311,6 +312,8 @@ $(document).ready(function() {
 
         $('.name').text(response[0]['name']);
         $('.description').text(response[0]['description']);
+        $('.category').text('Category: ' + response[0]['category']);
+
 
         $.ajax({
           url: base_url + 'users/profile',
