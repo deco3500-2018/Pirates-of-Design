@@ -368,12 +368,25 @@ $(document).ready(function() {
       success: function(result){
         $('.name').text(result[0]["name"]);
 
-        $('.email').text(result[0]["email"]);
+        $('.email').text('Email: ' +result[0]["email"]);
         $('.phonum').text('Phone number: '+result[0]["phonum"]);
         $('.experience').text('Experience: ' + result[0]["experience"] + ' years');
         $('.estimate_cost').text('Estimate cost: $'+result[0]["estimate_cost"]);
 
-        $('.medical_id').text(result[0]["medicalnum"]);
+        $('.medical_id').text('Medical ID: ' +result[0]["medicalnum"]);
+
+        $.ajax({
+          url: base_url + 'hospital/hospitalinfo',
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            'id': result[0]['hospitalId']
+          },
+          success: function(hospitalresult){
+            $('.hos_name').text('Name: ' + hospitalresult[0]['name']);
+            $('.hos_address').text('Address: ' + hospitalresult[0]['address']);
+          }
+        });
       }
     });
 
