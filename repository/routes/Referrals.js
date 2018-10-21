@@ -83,7 +83,7 @@ router.get('/referapproved', function(req, res){
 // Delete ReferralS
 router.post('/deleteReferral', (req, res, next) => {
   const d_id = req.body._id;
-  Referral.removeReferralById(d_id, (err, Referral) => {
+  Referral.findByIdAndRemove(d_id, (err, Referral) => {
     res.json({success:true, data: Referral});
   });
 });
@@ -91,7 +91,7 @@ router.post('/deleteReferral', (req, res, next) => {
 // Update Referrals
 router.post('/updateReferral', (req, res, next) => {
   const u_Referral = req.body;
-  Referral.updateReferralById(u_Referral, (err, Referral) => {
+  Referral.findByIdAndUpdate(u_Referral._id, u_Referral, (err, Referral) => {
     res.json({success:true, data: Referral, error: err});
   });
 })

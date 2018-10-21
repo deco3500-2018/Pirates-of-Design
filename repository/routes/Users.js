@@ -116,8 +116,8 @@ router.get('/getGP', function(req, res){
 
 // Delete UserS
 router.post('/deleteUser', (req, res, next) => {
-  const d_email = req.body.email;
-  User.removeUserByEmail(d_email, (err, user) => {
+  const d_id = req.body._id;
+  User.findByIdAndRemove(d_id, (err, user) => {
     res.json({success:true, data: user});
   });
 });
@@ -125,7 +125,7 @@ router.post('/deleteUser', (req, res, next) => {
 // Update Users
 router.post('/updateUser', (req, res, next) => {
   const u_user = req.body;
-  User.updateUserById(u_user, (err, user) => {
+  User.findByIdAndUpdate(u_user._id, u_user, (err, user) => {
     res.json({success:true, data: user});
   });
 })

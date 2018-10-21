@@ -49,7 +49,7 @@ router.get('/scheduleList', function(req, res){
 // Delete ScheduleS
 router.post('/deleteSchedule', (req, res, next) => {
   const d_id = req.body._id;
-  Schedule.removeScheduleById(d_id, (err, Schedule) => {
+  Schedule.findByIdAndRemove(d_id, (err, Schedule) => {
     res.json({success:true, data: Schedule});
   });
 });
@@ -57,7 +57,7 @@ router.post('/deleteSchedule', (req, res, next) => {
 // Update Schedules
 router.post('/updateSchedule', (req, res, next) => {
   const u_Schedule = req.body;
-  Schedule.updateScheduleById(u_Schedule, (err, Schedule) => {
+  Schedule.findByIdAndUpdate(u_Schedule._id, u_Schedule, (err, Schedule) => {
     res.json({success:true, data: Schedule});
   });
 })
