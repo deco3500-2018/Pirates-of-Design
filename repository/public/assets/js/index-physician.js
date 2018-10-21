@@ -289,9 +289,9 @@ $(document).ready(function() {
         });
 
         $('.gp_id').text('GP ID number: ' + response[0]['gp_id']);
-        $('.physician_id').text('Physician ID number: ' + rresponse[0]['physician_id']);
+        $('.physician_id').text('Physician ID number: ' + response[0]['physician_id']);
 
-        $('.chat-link').attr('href','/chat/' + response[0]['_id']);
+        $('.chat-link').attr('href', base_url + 'chat/' + response[0]['_id']);
 
       }
     })
@@ -356,9 +356,9 @@ $(document).ready(function() {
         });
 
         $('.gp_id').text('GP ID number: ' + response[0]['gp_id']);
-        $('.physician_id').text('Physician ID number: ' + rresponse[0]['physician_id']);
+        $('.physician_id').text('Physician ID number: ' + response[0]['physician_id']);
 
-        $('.chat-link').attr('href','/chat/' + response[0]['_id']);
+        $('.chat-link').attr('href', base_url + 'chat/' + response[0]['_id']);
 
       }
     });
