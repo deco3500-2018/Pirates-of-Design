@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
-  base_url = 'http://localhost:3000/';
-  // base_url = 'https://easyreferral.herokuapp.com/';
+  // base_url = 'http://localhost:3000/';
+  base_url = 'https://easyreferral.herokuapp.com/';
 
   function setCookie(name,value,days) {
     var expires = "";
@@ -238,15 +238,55 @@ $(document).ready(function() {
         console.log(response);
         $('.ref-title').text('Referral #'+ response[0]["_id"])
 
-        $('.patient_name').text(response[0]['patient_name']);
-        $('.patient_address').text(response[0]['patient_address']);
-        $('.patient_phonum').text(response[0]['patient_phonum']);
+        $('.patient_name').text('Name: ' + response[0]['patient_name']);
+        $('.patient_address').text('Address: ' + response[0]['patient_address']);
+        $('.patient_phonum').text('Phone Number: ' + response[0]['patient_phonum']);
 
         $('.name').text(response[0]['name']);
         $('.description').text(response[0]['description']);
 
-        $('.gp_id').text(response[0]['gp_id']);
-        $('.physician_id').text(response[0]['physician_id']);
+        $.ajax({
+          url: base_url + 'users/profile',
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            'id': response[0]['gp_id']
+          },
+          success: function(gpresult){
+            $('.gp_name').text('Name: ' + gpresult[0]['name']);
+            $('.gp_phonum').text('Phone Number: ' + gpresult[0]['phonum']);
+          }
+        });
+
+        $.ajax({
+          url: base_url + 'users/profile',
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            'id': response[0]['physician_id']
+          },
+          success: function(physicianresult){
+            $('.physician_name').text('Name: ' + physicianresult[0]['name']);
+            $('.physician_phonum').text('Phone Number: ' + physicianresult[0]['phonum']);
+
+            $.ajax({
+              url: base_url + 'hospital/hospitalinfo',
+              method: 'POST',
+              dataType: 'json',
+              data: {
+                'id': physicianresult[0]['hospitalId']
+              },
+              success: function(hospitalresult){
+                $('.hos_name').text(hospitalresult[0]['name']);
+                $('.hos_address').text(hospitalresult[0]['address']);
+
+              }
+            })
+          }
+        });
+
+        $('.gp_id').text('GP ID number: ' + response[0]['gp_id']);
+        $('.physician_id').text('Physician ID number: ' + rresponse[0]['physician_id']);
 
         $('.chat-link').attr('href','/chat/' + response[0]['_id']);
 
@@ -261,20 +301,57 @@ $(document).ready(function() {
       method: 'GET',
       success: function(response){
         console.log(response);
-        $('.ref-title').text('Referral #'+ response[0]["_id"]);
-        $('.hid_ref_id').text(response[0]["_id"]);
+        $('.ref-title').text('Referral #'+ response[0]["_id"])
 
-        $('.patient_name').text(response[0]['patient_name']);
-        $('.patient_address').text(response[0]['patient_address']);
-        $('.patient_phonum').text(response[0]['patient_phonum']);
-        $('.patient_dob').text(response[0]['patient_dob']);
+        $('.patient_name').text('Name: ' + response[0]['patient_name']);
+        $('.patient_address').text('Address: ' + response[0]['patient_address']);
+        $('.patient_phonum').text('Phone Number: ' + response[0]['patient_phonum']);
 
-        $('.category').text(response[0]['category']);
         $('.name').text(response[0]['name']);
         $('.description').text(response[0]['description']);
 
-        $('.gp_id').text(response[0]['gp_id']);
-        $('.physician_id').text(response[0]['physician_id']);
+        $.ajax({
+          url: base_url + 'users/profile',
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            'id': response[0]['gp_id']
+          },
+          success: function(gpresult){
+            $('.gp_name').text('Name: ' + gpresult[0]['name']);
+            $('.gp_phonum').text('Phone Number: ' + gpresult[0]['phonum']);
+          }
+        });
+
+        $.ajax({
+          url: base_url + 'users/profile',
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            'id': response[0]['physician_id']
+          },
+          success: function(physicianresult){
+            $('.physician_name').text('Name: ' + physicianresult[0]['name']);
+            $('.physician_phonum').text('Phone Number: ' + physicianresult[0]['phonum']);
+
+            $.ajax({
+              url: base_url + 'hospital/hospitalinfo',
+              method: 'POST',
+              dataType: 'json',
+              data: {
+                'id': physicianresult[0]['hospitalId']
+              },
+              success: function(hospitalresult){
+                $('.hos_name').text(hospitalresult[0]['name']);
+                $('.hos_address').text(hospitalresult[0]['address']);
+
+              }
+            })
+          }
+        });
+
+        $('.gp_id').text('GP ID number: ' + response[0]['gp_id']);
+        $('.physician_id').text('Physician ID number: ' + rresponse[0]['physician_id']);
 
         $('.chat-link').attr('href','/chat/' + response[0]['_id']);
 

@@ -47,6 +47,15 @@ router.get('/hospitalList', function(req, res){
   });
 });
 
+// get hospital info
+router.post('/hospitalinfo', function (req, res){
+  const u_id = req.body.id;
+
+  Hospital.find({'_id':u_id}, ['name', 'address'], function(err,hospital){
+    res.send(hospital);
+  })
+});
+
 // Delete HospitalS
 router.post('/deleteHospital', (req, res, next) => {
   const d_id = req.body._id;

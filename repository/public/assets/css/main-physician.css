@@ -39,6 +39,17 @@
 
 .ref-detail .row {margin-top: 5%;}
 
+/* Ref wait */
+.ref-wait .pic {
+  border-radius: 50%;
+  max-width: 90%;
+  margin-bottom: 3%;
+}
+
+.ref-wait p{margin-bottom: 0px;}
+
+.ref-wait .row {margin-top: 5%;}
+
 /* All History */
 .all-history .referral-box {overflow-y: scroll;}
 .all-history .referral-list:hover{cursor: pointer;}

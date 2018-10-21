@@ -11,6 +11,22 @@
           transition: all 0.3s ease-out;
 }
 
+.referral .before {
+  background: #2196F3;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  opacity: 1;
+  float: left;
+  -webkit-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+
+.before:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .ref-info {
   border-left: 1px solid black;
 }
@@ -29,7 +45,7 @@
   opacity: 0.8;
 }
 
-.next i{
+.next i, .before i{
   text-align: center;
   margin-left: auto;
   margin-right: auto;

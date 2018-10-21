@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  // base_url = 'https://easyreferral.herokuapp.com/';
-  base_url = 'http://localhost:3000/';
+  base_url = 'https://easyreferral.herokuapp.com/';
+  // base_url = 'http://localhost:3000/';
 
   function setCookie(name,value,days) {
     var expires = "";
@@ -175,35 +175,75 @@ $(document).ready(function() {
       method: 'GET',
       success: function(result){
         $.each(result, function(test){
-          $('.physician-list').append(
-            '<div class="custom-box p-3 mt-2 each_physician">' +
-            '<p class="box_title text-bold">' + result[test]["name"] +'</p>' +
-            '<p class="box_date font-80"> Experience: ' +result[test]["experience"]+' years, Estimate Cost: $' +result[test]["estimate_cost"] + '</p>'+
-            '<br/>' +
-            '<p class="ref_title font-80 text-bold">Hospital: Hospital A</p>' +
-            '<p class="ref_description font-80">Phone Number: '+result[test]["phonum"]+' </p>' +
-          '</div>'
-          )
-        });
+          // $('.physician-list').append(
+          //   '<div class="custom-box p-3 mt-2 each_physician">' +
+          //   '<p class="box_title text-bold physician_id hidden">' + result[test]["_id"] +'</p>' +
+          //   '<p class="box_title text-bold name">' + result[test]["name"] +'</p>' +
+          //   '<p class="box_date font-80"> Experience: ' +result[test]["experience"]+' years, Estimate Cost: $' +result[test]["estimate_cost"] + '</p>'+
+          //   '<p class="ref_description font-80">Phone Number: '+result[test]["phonum"]+' </p>' +
+          //   '<br/>' +
+          //   '<p class="ref_title font-80 text-bold hospital_id">' +result[test]["hospitalId"]+'</p>'
+          // );
 
-        $('.each_physician').click(function(){
-          $('.physician-detail').html(
-            '<img class="pic" src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?size=338&ext=jpg">'+
-            '<p class="font-mo text-bold">Luke <br/>Clarkson</p>'+
-            '<hr class="custom-hr" align="left" />'+
-            '<p class="font-80">123123 Street Road</p>'+
-            '<p class="font-80">040212341234</p>'+
-            '<p class="font-80">21 years old (1990-02-02)</p>'+
-            '<p class="font-80">Medical ID: 123123</p>'+
-            '<br/>'+
-            '<p class="font-80">Hospital A</p>'+
-            '<p class="font-80">asdfadsfasdf St</p>'+
-            '<p class="font-80"></p>'
-          );
-        });
+          $.ajax({
+            url:base_url + 'hospital/hospitalinfo',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+              "id": result[test]["hospitalId"]
+            },
+            success: function(hospitalresult){
+              $('.physician-list').append(
+                '<div class="custom-box p-3 mt-2 each_physician">' +
+                '<p class="box_title text-bold physician_id hidden">' + result[test]["_id"] +'</p>' +
+                '<p class="box_title text-bold name">' + result[test]["name"] +'</p>' +
+                '<p class="box_date font-80 physician_detail"> Experience: ' +result[test]["experience"]+' years, Estimate Cost: $' +result[test]["estimate_cost"] + '</p>'+
+                '<p class="ref_description font-80 phonum">Phone Number: '+result[test]["phonum"]+' </p>' +
+                '<br/>' +
+                '<p class="ref_title font-80 text-bold hospital_id">' +result[test]["hospitalId"]+'</p>' +
+                '<p class="ref_title font-80 text-bold hospital_name">' +hospitalresult[0]["name"]+'</p>' +
+                '<p class="ref_title font-80 text-bold hospital_address">' +hospitalresult[0]["address"]+'</p>' +
+                '</div>'
+              );
 
+              $('.each_physician').click(function(){
+                id = $(this).children('.physician_id').text();
+                name = $(this).children('.name').text();
+                detail = $(this).children('.physician_detail').text();
+                phonum = $(this).children('.phonum').text();
+                hospital_id = $(this).children('.hospital_id').text();
+                hospital_name = $(this).children('.hospital_name').text();
+                hospital_address = $(this).children('.hospital_address').text();
+
+
+                $('.physician-detail').html(
+                  '<h5>Chosen Physician: </h5>' +
+                  '<img class="pic" src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?size=338&ext=jpg">'+
+                  '<p class="hidden chosen_physician_id">'+ id +'</p>' +
+                  '<p class="font-mo text-bold">'+ name +'</p>'+
+                  '<hr class="custom-hr" align="left" />'+
+                  '<p class="font-80">'+ phonum +'</p>'+
+                  '<p class="font-80">'+ detail +'</p>'+
+                  '<br/>'+
+                  '<p class="font-80 hidden">'+ hospital_id +'</p>'+
+                  '<p class="font-80">'+ hospital_name +'</p>'+
+                  '<p class="font-80">'+ hospital_address +'</p>'
+                );
+              });
+
+            }
+          })
+        });
       }
+    });
+
+    $('.before-2').click(function(){
+      gotoStep1();
     })
+
+    $('.before-3').click(function(){
+      gotoStep2();
+    });
 
     $('.next-3').click(function(){
       $.getScript('/assets/third-party/jquery-confirm.min.js', function(){
@@ -212,23 +252,54 @@ $(document).ready(function() {
           content: 'Simple confirm!',
           buttons: {
               confirm: function () {
-                gotoStep1();
 
-                $.getScript("/assets/third-party/Notice/jBox.Notice.js", function(){
-                  setTimeout(function(){
-                    new jBox('Notice', {
-                      theme: 'NoticeFancy',
-                      attributes: {
-                        x: 'left',
-                        y: 'bottom'
-                      },
-                      color: 'black',
-                      content: 'The referral is successfully registered',
-                      animation: {open: 'slide:bottom', close: 'slide:left'}
-                    });
-                  }, 500)
+                gp_id = getCookie('userId');
 
-                });
+                $.ajax({
+                  url: base_url + 'referral/addreferral',
+                  method: 'POST',
+                  dataType: 'json',
+                  data: {
+                    name: $('#inputrtitle').val(),
+                    patient_name: $('#inputpname').val(),
+                    patient_address: $('#inputpaddress').val(),
+                    patient_phonum: $('#inputpphonum').val(),
+                    patient_dob: $('#inputpdob').val(),
+                    description: $('#inputrdesc').val(),
+                    gp_id: gp_id,
+                    state: 1,
+                    physician_id: $('.chosen_physician_id').text(),
+                    category: $("input[name='inputrcategory']:checked").val()
+                  },
+                  success: function(result){
+                    console.log(result);
+                    if (result["success"] == true){
+
+                      $.getScript("/assets/third-party/Notice/jBox.Notice.js", function(){
+                        setTimeout(function(){
+                          new jBox('Notice', {
+                            theme: 'NoticeFancy',
+                            attributes: {
+                              x: 'left',
+                              y: 'bottom'
+                            },
+                            color: 'black',
+                            content: 'The referral is successfully registered',
+                            animation: {open: 'slide:bottom', close: 'slide:left'}
+                          });
+                        }, 500)
+
+                      });
+
+                      gotoStep1();
+
+                    } else {
+                      alert(result["error"]["message"]);
+                    }
+                  }
+                })
+
+
               },
               cancel: function () {
                 // cancel
@@ -238,6 +309,10 @@ $(document).ready(function() {
       });
 
     });
+
+    function validate(){
+
+    }
 
     $('#step2').hide();
     $('#step3').hide();
@@ -311,15 +386,55 @@ $(document).ready(function() {
         console.log(response);
         $('.ref-title').text('Referral #'+ response[0]["_id"])
 
-        $('.patient_name').text(response[0]['patient_name']);
-        $('.patient_address').text(response[0]['patient_address']);
-        $('.patient_phonum').text(response[0]['patient_phonum']);
+        $('.patient_name').text('Name: ' + response[0]['patient_name']);
+        $('.patient_address').text('Address: ' + response[0]['patient_address']);
+        $('.patient_phonum').text('Phone Number: ' + response[0]['patient_phonum']);
 
         $('.name').text(response[0]['name']);
         $('.description').text(response[0]['description']);
 
-        $('.gp_id').text(response[0]['gp_id']);
-        $('.physician_id').text(response[0]['physician_id']);
+        $.ajax({
+          url: base_url + 'users/profile',
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            'id': response[0]['gp_id']
+          },
+          success: function(gpresult){
+            $('.gp_name').text('Name: ' + gpresult[0]['name']);
+            $('.gp_phonum').text('Phone Number: ' + gpresult[0]['phonum']);
+          }
+        });
+
+        $.ajax({
+          url: base_url + 'users/profile',
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            'id': response[0]['physician_id']
+          },
+          success: function(physicianresult){
+            $('.physician_name').text('Name: ' + physicianresult[0]['name']);
+            $('.physician_phonum').text('Phone Number: ' + physicianresult[0]['phonum']);
+
+            $.ajax({
+              url: base_url + 'hospital/hospitalinfo',
+              method: 'POST',
+              dataType: 'json',
+              data: {
+                'id': physicianresult[0]['hospitalId']
+              },
+              success: function(hospitalresult){
+                $('.hos_name').text(hospitalresult[0]['name']);
+                $('.hos_address').text(hospitalresult[0]['address']);
+
+              }
+            })
+          }
+        });
+
+        $('.gp_id').text('GP ID number: ' + response[0]['gp_id']);
+        $('.physician_id').text('Physician ID number: ' + rresponse[0]['physician_id']);
 
         $('.chat-link').attr('href','/chat/' + response[0]['_id']);
 

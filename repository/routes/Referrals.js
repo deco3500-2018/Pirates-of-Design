@@ -41,7 +41,7 @@ router.post('/addReferral', (req, res, next) => {
 // Get all Referrals
 router.get('/referralList', function(req, res){
   console.log('test');
-  Referral.find({}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at', 'category'], function(err,Referrals){
+  Referral.find({}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at', 'category'], { sort: {created_at: -1}} ,function(err,Referrals){
     var ReferralMap = {};
 
     Referrals.forEach(function(Referral) {
@@ -54,7 +54,7 @@ router.get('/referralList', function(req, res){
 
 // Get state 1 = waiting
 router.get('/referwait', function(req, res){
-  Referral.find({'state':1}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at', 'category'], function(err,Referrals){
+  Referral.find({'state':1}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at', 'category'], { sort: {created_at: -1}} , function(err,Referrals){
     var ReferralMap = {};
 
     Referrals.forEach(function(Referral) {
@@ -68,7 +68,7 @@ router.get('/referwait', function(req, res){
 // Get state 2 = approved
 router.get('/referapproved', function(req, res){
   console.log('test');
-  Referral.find({'state':2}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at', 'category'], function(err,Referrals){
+  Referral.find({'state':2}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at', 'category'] , { sort: {created_at: -1}}, function(err,Referrals){
     var ReferralMap = {};
 
     Referrals.forEach(function(Referral) {
