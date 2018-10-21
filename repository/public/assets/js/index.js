@@ -142,6 +142,14 @@ $(document).ready(function() {
     $('#home-menu').addClass('active');
   } else if ( $('.container').hasClass('aboutus')) {
     $('#about-menu').addClass('active');
+  } else if ( $('.container').hasClass('chat')) {
+    $.ajax({
+      url: window.location.href + '/backend',
+      method: 'GET',
+      success: function(result){
+        $('.ref-title').text('Chat Referral #' + result["id"])
+      }
+    })
   }
 
 

@@ -1,15 +1,17 @@
 
 <div id="header"></div>
-<div id="header_content"></div>
 <script src="/assets/third-party/jquery-3.3.1.js"></script>
 
 <script>
   $(function(){
     $('#header').load('../template/header.html');
-    $('#header_content').load('../template/header_content_gp.html');
     $('#chat').load('../chat.html');
-    $('#footer_content').load('../template/footer_content.html');
     $('#footer').load('../template/footer.html');
+
+    var script = document.createElement('script');
+    script.src = '../assets/js/index.js';
+    script.setAttribute('src','../assets/js/index.js');
+    document.getElementsByTagName("script")[0].parentNode.appendChild(script);
   })
 </script>
 
@@ -25,17 +27,16 @@
 </style>
 
 
-<div class="container ref-detail">
-  <h1 class="font-mo text-bold text-up ref-title">Referral #</h1>
+<div class="container chat">
+  <h1 class="font-mo text-bold text-up ref-title mt-5">Chatpage of Referral #</h1>
   <hr class="custom-hr" align="left" />
 
   <p class="title-info font-80 line-25">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue vestibulum mauris, euismod hendrerit velit. Morbi vel fermentum turpis. Sed dapibus, tortor nec hendrerit molestie, magna odio dictum risus, id tempus est lorem a tellus. Donec a massa mi. Suspendisse potenti. Fusce mollis nibh mi, ut porta velit varius id. Nullam id gravida magna, hendrerit volutpat erat. Fusce bibendum nibh at lorem condimentum posuere. Morbi aliquet, tellus non fermentum interdutm, nulla ligula ullamcorper nulla, ut eleifend ligula tellus nec elit. Suspendisse a lorem ultricies, sodales sapien nec, convallis augue. Sed ut ullamcorper quam, at varius lorem. Vivamus in neque varius, molestie leo ut, iaculis lorem. Maecenas et ipsum nec sem sagittis eleifend.
+    Chat between physician and gp
   </p>
 
   <div id="chat"></div>
 
 </div>
 
-<div id="footer_content"></div>
 <div id="footer"></div>

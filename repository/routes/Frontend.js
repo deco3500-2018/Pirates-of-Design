@@ -38,6 +38,10 @@ router.get('/physician/referral-wait/:id/backend', function (req, res) {
   });
 })
 
+router.get('/chat/:id/backend', function (req, res) {
+  res.send({'id':req.params.id})
+})
+
 router.use('/', express.static(path.join(__dirname, '../public')));
 router.use('/signup', express.static(path.join(__dirname, '../public/signup.html')));
 router.use('/login', express.static(path.join(__dirname, '../public/login.html')));

@@ -155,6 +155,7 @@ $(document).ready(function() {
                 '<p class="box_title text-bold">' + result[i]["patient_name"]+'</p>' +
                 '<p class="box_date font-80">Thu, 16/16/2018 09:00 - 11:00</p>' +
                 '<br/>' +
+                '<p class="ref_title font-80 text-bold">'+ result[i]["category"]+'</p>' +
                 '<p class="ref_title font-80 text-bold">'+ result[i]["name"]+'</p>' +
                 '<p class="ref_description font-80">'+ result[i]["description"]+'</p>' +
 
@@ -184,6 +185,7 @@ $(document).ready(function() {
                 '<p class="box_title text-bold">' + result[i]["patient_name"]+'</p>' +
                 '<p class="box_date font-80">Thu, 16/16/2018 09:00 - 11:00</p>' +
                 '<br/>' +
+                '<p class="ref_title font-80 text-bold">'+ result[i]["category"]+'</p>' +
                 '<p class="ref_title font-80 text-bold">'+ result[i]["name"]+'</p>' +
                 '<p class="ref_description font-80">'+ result[i]["description"]+'</p>' +
 
