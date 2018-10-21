@@ -42,7 +42,7 @@ $(document).ready(function() {
               y: 'bottom'
             },
             color: 'black',
-            content: 'You are assigned as GP '+ result[0]['name'],
+            content: 'You are assigned as Physician '+ result[0]['name'],
             animation: {open: 'slide:bottom', close: 'slide:left'}
           });
         }, 500)
