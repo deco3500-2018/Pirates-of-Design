@@ -48,6 +48,10 @@ const ReferralSchema = mongoose.Schema({
   physician_id: {
     type: Schema.Types.ObjectId,
     ref: 'User'
+  },
+  category: {
+    type: String,
+    required: true
   }
 
 }, {timestamps: { createdAt: 'created_at' }});

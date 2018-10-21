@@ -26,8 +26,13 @@ router.get('/gp/referral/:id/backend', function (req, res) {
   });
 })
 
-
 router.get('/physician/referral/:id/backend', function (req, res) {
+  Referral.find({'_id': req.params.id}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at'], function(err,Referrals){
+    res.send(Referrals);
+  });
+})
+
+router.get('/physician/referral-wait/:id/backend', function (req, res) {
   Referral.find({'_id': req.params.id}, ['name', 'patient_name', 'patient_address', 'patient_phonum', 'patient_dob', 'description', 'gp_id', 'state', 'physician_id', 'created_at'], function(err,Referrals){
     res.send(Referrals);
   });
@@ -57,6 +62,7 @@ router.use('/physician/referral', express.static(path.join(__dirname, '../public
 router.use('/physician/all-referral', express.static(path.join(__dirname, '../public/physician/all-history.html')));
 router.use('/physician/schedule', express.static(path.join(__dirname, '../public/physician/schedule.html')));
 router.use('/physician/profile', express.static(path.join(__dirname, '../public/physician/profile.html')));
+router.use('/physician/referral-wait/*', express.static(path.join(__dirname, '../public/physician/referral-detail-waiting.html')));
 router.use('/physician/referral/*', express.static(path.join(__dirname, '../public/physician/referral-detail.html')));
 
 module.exports = router;

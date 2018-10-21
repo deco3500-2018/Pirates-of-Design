@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
-  // base_url = 'http://localhost:3000/';
-  base_url = 'https://easyreferral.herokuapp.com/';
+  base_url = 'http://localhost:3000/';
+  // base_url = 'https://easyreferral.herokuapp.com/';
 
   function setCookie(name,value,days) {
     var expires = "";
@@ -61,7 +61,7 @@ $(document).ready(function() {
   if ($('.container').hasClass('schedules')){
     $('#schedules-menu').addClass('active');
 
-    $.getScript("https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.js", function(){
+    $.getScript("/assets/third-party/fullcalendar.js", function(){
       $('#calendar').fullCalendar({
         header: {
           left: 'prev,next today',
@@ -101,7 +101,7 @@ $(document).ready(function() {
             },
         ],
         dayClick: function(date, jsEvent, view) {
-          $.getScript("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", function(){
+          $.getScript("/assets/third-party/bootstrap.min.js", function(){
             $('#addModal').modal();
             $('#datetimepicker1').datetimepicker({});
             $('#datetimepicker2').datetimepicker({});
@@ -143,14 +143,14 @@ $(document).ready(function() {
     $('#referral-menu').addClass('active');
 
     $.ajax({
-      url: base_url + 'referral/referrallist',
+      url: base_url + 'referral/referwait',
       method: 'GET',
       success: function(result){
 
         for (i=0; i<3; i++){
           if (result[i]){
             $('.waiting-approval').append(
-              '<div class="custom-box p-3 each_referral mt-2">' +
+              '<div class="custom-box p-3 each_referral_wait mt-2">' +
               '<p class="hidden hid_id">'+result[i]['_id']+'</p>'+
                 '<p class="box_title text-bold">' + result[i]["patient_name"]+'</p>' +
                 '<p class="box_date font-80">Thu, 16/16/2018 09:00 - 11:00</p>' +
@@ -163,16 +163,16 @@ $(document).ready(function() {
           }
         }
 
-        $('.each_referral').click(function(){
+        $('.each_referral_wait').click(function(){
           id = $(this).children('.hid_id').text();
-          window.location = '/physician/referral/'+id;
+          window.location = '/physician/referral-wait/'+id;
         });
 
       }
     });
 
     $.ajax({
-      url: base_url + 'referral/referrallist',
+      url: base_url + 'referral/referapproved',
       method: 'GET',
       success: function(result){
 
@@ -253,6 +253,116 @@ $(document).ready(function() {
       }
     })
 
+  } else if ( $('.container').hasClass('ref-wait')) {
+    console.log(window.location.href);
+
+    $.ajax({
+      url: window.location.href+'/backend',
+      method: 'GET',
+      success: function(response){
+        console.log(response);
+        $('.ref-title').text('Referral #'+ response[0]["_id"]);
+        $('.hid_ref_id').text(response[0]["_id"]);
+
+        $('.patient_name').text(response[0]['patient_name']);
+        $('.patient_address').text(response[0]['patient_address']);
+        $('.patient_phonum').text(response[0]['patient_phonum']);
+        $('.patient_dob').text(response[0]['patient_dob']);
+
+        $('.category').text(response[0]['category']);
+        $('.name').text(response[0]['name']);
+        $('.description').text(response[0]['description']);
+
+        $('.gp_id').text(response[0]['gp_id']);
+        $('.physician_id').text(response[0]['physician_id']);
+
+        $('.chat-link').attr('href','/chat/' + response[0]['_id']);
+
+      }
+    });
+
+    $('.ref-approve').click(function(){
+
+      $.getScript('/assets/third-party/jquery-confirm.min.js', function(){
+        $.confirm({
+          title: 'Confirm!',
+          content: 'Last confirmation for the referral?',
+          buttons: {
+              confirm: function () {
+                $.ajax({
+                  url: base_url + 'referral/updateReferral',
+                  type: 'POST',
+                  dataType: 'json',
+                  data: {
+                    "_id": $('.hid_ref_id').text(),
+                    "state": 2,
+                    "name": $('.name').text(),
+                    "patient_name": $('.patient_name').text(),
+                    "patient_address": $('.patient_address').text(),
+                    "patient_phonum": $('.patient_phonum').text(),
+                    "patient_dob": $('.patient_dob').text(),
+                    "description": $('.description').text(),
+                    "gp_id": $('.gp_id').text(),
+                    "physician_id": $('.physician_id').text(),
+                    "category": $('.category').text()
+                  },
+                  success: function(result){
+                    console.log(result);
+                    window.location = '/physician/referral/' + result["data"]["_id"];
+                  }
+                })
+              },
+              cancel: function () {
+                // cancel
+              }
+            }
+        });
+      });
+
+    });
+
+    $('.ref-cancel').click(function(){
+
+      $.getScript('/assets/third-party/jquery-confirm.min.js', function(){
+        $.confirm({
+          title: 'Confirm',
+          content: 'Are you sure you want to cancel?',
+          buttons: {
+              confirm: function () {
+
+                $.ajax({
+                  url: base_url + 'referral/updateReferral',
+                  type: 'POST',
+                  dataType: 'json',
+                  data: {
+                    "_id": $('.hid_ref_id').text(),
+                    "state": 0,
+                    "name": $('.name').text(),
+                    "patient_name": $('.patient_name').text(),
+                    "patient_address": $('.patient_address').text(),
+                    "patient_phonum": $('.patient_phonum').text(),
+                    "patient_dob": $('.patient_dob').text(),
+                    "description": $('.description').text(),
+                    "gp_id": $('.gp_id').text(),
+                    "physician_id": $('.physician_id').text(),
+                    "category": $('.category').text()
+                  },
+                  success: function(result){
+                    window.location = '/physician/referral/' + result["data"]["_id"];
+                  }
+                })
+              },
+              cancel: function () {
+                // cancel
+              }
+            }
+        });
+      });
+
+    });
+
+
+
   } else if ( $('.container').hasClass('all-history')) {
     console.log('all-history');
 
@@ -262,7 +372,7 @@ $(document).ready(function() {
       dataType: 'json',
       success: function(result){
         console.log(result);
-        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js", function(){
+        $.getScript("/assets/third-party/list.min.js", function(){
           var options = {
             valueNames: [ '_id', 'name', 'patient_name' ],
             item: '<div class="my-2 referral-list"><p class="hidden _id"></p><h3 class="name"></h3>Patient name: <p class="patient_name"></p><br/>Thu, 16 Oct 2018<hr/></div>'

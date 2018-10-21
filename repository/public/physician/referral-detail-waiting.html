@@ -1,0 +1,86 @@
+
+<div id="header"></div>
+<div id="header_content"></div>
+<link rel="stylesheet" href="../../assets/css/main-physician.css">
+<script src="../../assets/third-party/jquery-3.3.1.js"></script>
+
+<script src="/assets/third-party/bootstrap.min.js"></script>
+<script src='/assets/third-party/full-jquery.min.js'></script>
+<script src='/assets/third-party/full-jquery-ui.min.js'></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
+<script>
+  $(function(){
+    $('#header').load('../../template/header.html');
+    $('#header_content').load('../../template/header_content_physician.html');
+    $('#footer_content').load('../../template/footer_content.html');
+    $('#footer').load('../../template/footer.html');
+
+    var script = document.createElement('script');
+    script.src = 'assets/js/index-physician.js';
+    script.setAttribute('src','../../assets/js/index-physician.js');
+    document.getElementsByTagName("script")[0].parentNode.appendChild(script);
+  })
+</script>
+
+
+<div class="container ref-wait">
+  <a href="/physician/referral" class="font-ro go-back"><i class="fas fa-angle-left"></i>go back</a>
+  <h1 class="font-mo text-bold text-up ref-title">Referral #</h1>
+  <div class="hidden hid_ref_id"></div>
+  <hr class="custom-hr" align="left" />
+
+  <p class="title-info font-80 line-25">
+  </p>
+
+  <div class="row">
+
+    <!-- Maps -->
+    <div class="col-md-4 custom-box" id="googleMap" style="width:100%;height:400px;">
+
+      <script>
+      function myMap() {
+      var mapProp= {
+          center:new google.maps.LatLng(51.508742,-0.120850),
+          zoom:5,
+      };
+      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      }
+      </script>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVUk29LA58EyC3PJ8RiPg4iuayv8f0fs0&callback=myMap">
+      </script>
+
+    </div>
+
+    <!-- Data -->
+    <div class="col-md-8 data">
+      <button class="btn btn-danger ref-cancel">Cancel</button>
+      <button class="btn btn-primary ref-approve">Approve</button>
+
+      <p class="font-mo text-bold patient_name">Luke <br/>Clarkson</p>
+      <hr class="custom-hr" align="left" />
+
+      <p class="font-80 patient_address"></p>
+      <p class="font-80 patient_phonum">040212341234</p>
+      <p class="font-80 patient_dob">040212341234</p>
+
+      <p class="font-80 category">Hospital A</p>
+      <p class="font-80 name"></p>
+      <p class="font-80 description"></p>
+
+      <p class="font-80 gp_id">Medical ID: 123123</p>
+      <p class="font-80 physician_id">Hospital A</p>
+      <p class="font-80"></p>
+
+      <a  href="" class="chat-link"><p class="text-bold font-mo mt-5">Chat about this referral</p></a>
+      <hr class="custom-hr" align='left'/>
+
+    </div>
+
+  </div>
+</div>
+
+<div id="footer_content"></div>
+<div id="footer"></div>
