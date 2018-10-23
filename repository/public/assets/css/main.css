@@ -25,13 +25,15 @@
 
 .align-right {text-align: right;}
 .align-left {text-align: left;}
-.align-middle {text-align: middle}
+.align-middle {text-align: center !important;}
 
 .disp-inline {display: inline;}
 
 * {
   font-family: 'Roboto', sans-serif;
 }
+
+.w-100 {width: 100% !important;}
 
 .form-control:focus, .btn:focus {
   box-shadow: 0 0 0 0 rgba(0,123,255,.25) !important;
@@ -41,6 +43,8 @@
 .font-mo { font-family: 'Montserrat', sans-serif !important; }
 
 .custom-hr { width: 50px; border: 5px solid #5288f3; border-radius: 10px; text-align: left;}
+.custom-hr-red { width: 50px; border: 5px solid #c43435; border-radius: 10px; text-align: left;}
+.custom-hr-white { width: 50px; border: 5px solid white; border-radius: 10px; text-align: left;}
 .custom-box {
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.20);
   -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.20);
@@ -98,6 +102,18 @@ input:checked + .slider:before { -webkit-transform: translateX(28px); -ms-transf
 }
 
 .go-back:hover {color: white;}
+
+.design-process {
+  background: #f2f2f2;
+}
+
+.meet-team {
+  background: #395d8d;
+}
+
+.meet-team img {
+  border-radius: 50%;
+}
 
 /* Header */
 .header_content .title { line-height: 5px; }
