@@ -31,10 +31,10 @@ Summarized Features:
 # Conference poster & Promotional Material
 
 The exhibition was conducted at 24th October 2018, from 5.30PM - 7.30PM. EasyReferral booth has 4 promotional material, which are:
-* [Poster]()
+* [Poster](https://github.com/deco3500-2018/Pirates-of-Design/wiki/Conference-poster-&-Promotional-Material)
 * [Informative Website](http://easyreferral.herokuapp.com)
 * [Video](https://www.youtube.com/watch?v=3UkhrcoYboA)
-* [Brochure]()
+* [Brochure](https://github.com/deco3500-2018/Pirates-of-Design/wiki/Conference-poster-&-Promotional-Material)
 
 > The details of our promotional material is in [this page](https://github.com/deco3500-2018/Pirates-of-Design/wiki/Conference-poster-&-Promotional-Material)
 
