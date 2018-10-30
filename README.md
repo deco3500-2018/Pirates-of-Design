@@ -26,7 +26,7 @@ Summarized Features:
    * **Get notified when the time is near.** 
 
 # Wiki
-> The wiki could be accessed in [this page](https://github.com/deco3500-2018/Pirates-of-Design/wiki)
+> The wiki could be accessed in [Home, this page](https://github.com/deco3500-2018/Pirates-of-Design/wiki)
 
 # Conference poster & Promotional Material
 
@@ -58,7 +58,7 @@ The process of our progress is divided by 3 sprints.
 
 > The details could be accessed at [this page](https://github.com/deco3500-2018/Pirates-of-Design/wiki/Process)
 
-# Team Members Contribution
+# Team Members
 
 - Keyne Oei - 45114551
 - Immanuel Lucky Ndilowe - 44241469
