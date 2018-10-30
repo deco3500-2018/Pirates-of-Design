@@ -3,6 +3,8 @@
 
 There are several cases here in Queensland with the fact that the patient is left waiting to see a specialist for months. One of the cases is how Danielle Nicholas waited for eight months to be told that she had cancer. This news is from Brisbane Times by Lucy Stone on June 2018 which means the news is recent and not yet solved. Referrals are very important to be noticed especially in the remote areas where people had difficulty to conduct consultation with the specialist. They have to travel in certain distant and make an appointment for a consultation. There are many reasons that cause this results, and one of the many is the fact that the referral system is still unstructured and unorganized. This issue has concerned our team, thus, we chose this issue as our domain problem.
 
+The concluded idea is to build a platform for doctors to reference their patients to specialist easily without paperworks and a corresponding platform for the patients to check their referenced specialists(Physician) and make changes regarding the meeting with specialists(Physician).
+
 Summarized Features:
 
 1. GP
